@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="学习经历," />
+  
+
+  
+    <meta name="description" content="关于安全的一些学习经历" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>关于安全的一些学习经历 [ icekylin7 Blog ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="icekylin7 Blog" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <!--[Origin]<img class="avatar" src="http://icekylin.github.io/images/logo.png"> -->
+    <img class="avatar" src="https://q1.qlogo.cn/g?b=qq&nk=157668440&s=640">
+    <span class="title">icekylin7 Blog</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">首页</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">归档</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/search" class="pure-menu-link">搜索</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        关于安全的一些学习经历
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2022-11-15T08:44:00.000Z">
+        2022-11-15
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%8E%86/" rel="tag">学习经历</a></li></ul>
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+      <span class="slash">/</span>
+      <!-- <span class="read">阅读耗时 12 分钟</span> -->
+    </header>
+
+    <div class="post-content">
+      <blockquote>
+<p>注意：此文不适合进阶学习，仅适合入门<br>很久以前学习过的一些网络安全相关知识，列出了一些知识点、大致的规划；方便快速上手]</p>
+</blockquote>
+<p>笔记不是刚需，但是当你第二次遇到同样简单的问题的时候，你还需要通过搜索引擎去查询，那不妨把简单的内容记录在笔记内，以供随时查阅参考。<br>因为是快速入门阶段，为快速了解体系，不会过多的深入原理。</p>
+<h3 id="Stage-0-前置技能"><a href="#Stage-0-前置技能" class="headerlink" title="Stage 0 - 前置技能"></a>Stage 0 - 前置技能</h3><p>“一个不会编程的运维不是一个好的黑客”<br>学习安全需要搭建靶场、编写脚本、读懂代码，在正式学习之前，至少需要掌握以下几种能力</p>
+<ul>
+<li>虚拟机软件的使用（如 VMware、VirtualBox 等）</li>
+<li>Linux操作系统基础（文件操作、目录切换、磁盘挂载、权限管理等）</li>
+<li>简单服务的搭建（Apache&#x2F;Nginx、MySQL、PHP）</li>
+</ul>
+<p>对于虚拟机软件 Windows 下主要推荐使用 <strong>VMware Workstation</strong>，界面简单容易上手。服务的搭建可以使用集成软件如：<strong>Phpstudy</strong>、<strong>wampserver</strong> 等软件，只需要能正常访问即可。Linux 操作系统建议长期使用，熟悉在命令行对文件进行增删查改的操作。在掌握 Linux 基本命令之后对服务搭建的技能进行拓展，在 Linux 上搭建一个完整 Web Server 服务，通常是使用的是 <strong>Apache + MySQL + PHP</strong>，简称也就是 LAMP（Linux Apache MySQL PHP）。<br>关键词：<code>#Linux搭建LAMP``#VMware安装Linux</code> <code>#phpstudy搭建网站</code></p>
+<h3 id="Stage-1-靶场学习"><a href="#Stage-1-靶场学习" class="headerlink" title="Stage 1 - 靶场学习"></a>Stage 1 - 靶场学习</h3><p>在掌握了基本服务的搭建技能后，可以通过搭建靶场来进行综合能力的学习，常见的靶场如 DVWA、Pikachu 都是不错的综合渗透测试靶场，这里以 <strong>DVWA</strong> 为例，可以通过 Phpstudy 或者 Linux 搭建 DVWA 靶场环境，在靶场内，需要学习的技能有如下</p>
+<ul>
+<li>Brute Force 暴力破解 <ul>
+<li>使用 BurpSuite 利用字典进行暴力破解</li>
+</ul>
+</li>
+<li>Command Injection 命令注入 <ul>
+<li>需要掌握 Linux、Windows 操作系统下命令行的连接符使用</li>
+</ul>
+</li>
+<li>CSRF<ul>
+<li>#TODO</li>
+</ul>
+</li>
+<li>File Inclusion 文件包含 <ul>
+<li>需要对 PHP 读取文件的函数进行学习</li>
+</ul>
+</li>
+<li>File Upload 文件上传 <ul>
+<li>需要学习如何编写一个简单的后门程序，关键词为 一句话木马，针对 PHP 搭建的服务也就是 PHP一句话木马，需要使用 蚁剑、冰蝎等工具进行连接。这里推荐使用 <a target="_blank" rel="noopener" href="https://github.com/AntSwordProject/antSword">蚁剑</a></li>
+</ul>
+</li>
+<li>SQL Injection SQL注入 <ul>
+<li>需要学习 SQL 基本语句，包括注释以及查询。</li>
+</ul>
+</li>
+<li>XSS <ul>
+<li>需要学习 JavaScript，如何利用 <code>&lt;script&gt;</code> 标签弹出提示框以及 Cookie</li>
+</ul>
+</li>
+</ul>
+<p>有关于靶场的学习内容，合理的利用搜索引可以轻松的获取到答案，针对 DVWA 的安全等级机制，不需要对 Medium、High、Impossible 的利用方式了然于心，但对于 Low 等级的利用方式，需要做到可以脱离任何资料而去利用。<br>关键词：<code>#phpstudy搭建DVWA``#DVWA WriteUp</code> <code>#DVWA 通关教程</code></p>
+<h3 id="Stage-2-靶机渗透"><a href="#Stage-2-靶机渗透" class="headerlink" title="Stage 2 - 靶机渗透"></a>Stage 2 - 靶机渗透</h3><p>靶机渗透测试可以帮助你速成脚本小子，也可以让你初步了解渗透测试的基本流程，在这过程中可能会使用大量的工具辅助，以下为 DC:1 靶机作为参考的学习途径<br>下载地址：<a target="_blank" rel="noopener" href="https://www.vulnhub.com/entry/dc-1,292/">https://www.vulnhub.com/entry/dc-1,292/</a></p>
+<ol>
+<li>VMware 或 VirtualBox 搭建靶机</li>
+<li>网络环境正常后进行局域网存活扫描（常用的工具有 fping、arping、nmap）<ul>
+<li><code>fping -aqg [网段/子网掩码]</code></li>
+</ul>
+</li>
+<li>对靶机端口信息进行扫描 <ul>
+<li><code>nmap -sV [Target_IP]</code></li>
+</ul>
+</li>
+<li>针对 Web 服务使用 msfconsole 可利用模块 <ol>
+<li>任意文件上传，使用蚁剑连接一句话木马</li>
+<li>缓冲区溢出，获取目标系统 Shell</li>
+</ol>
+</li>
+<li>利用 SUID 文件提升权限</li>
+</ol>
+<p>对靶机的渗透测试互联网上同样有大部分的参考实例，关键词为 <strong>靶机名称+WriteUp</strong> 或 <strong>靶机名称+Walkthrough</strong>，有过一次完整的打靶经验那我们就快速进入下一个阶段吧，不要过度迷恋这个感觉，毕竟靶机是打不完的。<br>工具的安装和使用并不会一帆风顺，有时需要查阅大部分的资料，对于不同环境的搭建又各有不同，可以使用集成的渗透测试系统如：Kali、Parrot等，这里推荐 <a target="_blank" rel="noopener" href="https://www.kali.org/">Kali</a><br>关键词：<code>#DC-1 WriteUp``#VMware搭建DC-1``#VirtualBox搭建DC-1</code></p>
+<h3 id="Stage-3-编程能力"><a href="#Stage-3-编程能力" class="headerlink" title="Stage 3 - 编程能力"></a>Stage 3 - 编程能力</h3><p>在愉快的脚本小子生活结束后，不要忘了巩固你的编程能力，有几门常用的语言适合作为渗透测试的辅助语言如 Python，Shell，下面推荐几个简单的脚本快速理解<br>Shell 局域网存活扫描</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">for i in &#123;1..254&#125;</span><br><span class="line">  do</span><br><span class="line">      (if ping -c 1 -W 1 10.110.2.$i &amp;&gt; /dev/null;then # 替换IP段为自身所处的IP段</span><br><span class="line">          echo &quot;10.110.2.$i is up&quot;</span><br><span class="line">      fi)&amp;</span><br><span class="line">  done</span><br><span class="line">wait</span><br></pre></td></tr></table></figure>
+
+<p>Python 获取目标banner</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">s = socket.socket()</span><br><span class="line">s.connect((<span class="string">&quot;198.46.152.109&quot;</span>,<span class="number">22</span>)) <span class="comment"># 198.46.152.109 是我的 vps 地址，22对应的服务是 SSH</span></span><br><span class="line">banner = s.recv(<span class="number">1024</span>)</span><br><span class="line"><span class="built_in">print</span>(banner)</span><br></pre></td></tr></table></figure>
+
+<p>Python 端口扫描</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> port <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">100</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        s = socket(AF_INET,SOCK_STREAM)</span><br><span class="line">        s.connect((<span class="string">&quot;198.46.152.109&quot;</span>,port)) </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;[+] Port:%d Open&#x27;</span> % port)</span><br><span class="line">        s.close()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;[-] Port:%d Close&#x27;</span> % port)</span><br></pre></td></tr></table></figure>
+
+<p>编程语言的学习入门通常需要掌握数据结构，循环，错误处理。对于 Python 还需要掌握一些模块，如上面使用到的 socket、requets 等。除此之外还有一些可能会用到的语言如 Go、Java、C，因为 Python 是一门很适合编写工具的脚本语言，所以暂时不对其他语言做深入了解（当然如果你有其他方面的能力也可以直接运用在网络编程的领域）</p>
+<h3 id="Stage-4-综合能力"><a href="#Stage-4-综合能力" class="headerlink" title="Stage 4 - 综合能力"></a>Stage 4 - 综合能力</h3><p>在掌握基本能力以后你已经可以编写简单的脚本程序来临时代替 fping、nmap 等工具来辅助你进行渗透测试（当然这并不是刚需），一入网安深似海，我的路线并不一定是最完美的，但既然我都可以总结出来，相信你也可以在此基础上更加精进来达到更高的境界。说是综合能力，其实在这时已经可以查漏补缺，弥补之前欠缺的知识，如完善理解 SQL注入的原理，通过 SQLi-Labs 等靶场进一步学习 SQL 注入，或是通过 Upload-Labs 靶场进一步学习绕过文件上传限制的方式，从这里开始学习就变得更加需要深度和广度，不妨根据前辈们的技能树，选择必备的技能以及感兴趣的方向，继续深度的学习，这里放几个我收集到的技能树，或许能给你之后的安全学习带来一点帮助</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.hackjie.com/1500.html">黑客街 web渗透学习路线图</a></li>
+<li><a target="_blank" rel="noopener" href="https://evilcos.me/security_skill_tree_basic/index.html">余弦的安全技能树简版</a></li>
+</ul>
+
+    </div>
+
+    <div>全文完。</div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stage-0-%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD"><span class="toc-text">Stage 0 - 前置技能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stage-1-%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0"><span class="toc-text">Stage 1 - 靶场学习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stage-2-%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F"><span class="toc-text">Stage 2 - 靶机渗透</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stage-3-%E7%BC%96%E7%A8%8B%E8%83%BD%E5%8A%9B"><span class="toc-text">Stage 3 - 编程能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stage-4-%E7%BB%BC%E5%90%88%E8%83%BD%E5%8A%9B"><span class="toc-text">Stage 4 - 综合能力</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+<div class="copyright">
+    <span>本作品采用</span>
+    <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>
+    <span>进行许可。 转载时请注明原文链接。</span>
+</div>
+<!-- <div class="share" style="width: 100%;">
+  <img src="https://kevinofneu-blog-static.oss-cn-beijing.aliyuncs.com/static/2018-12-10-qrcode_for_gh_ffacf5722095_258.jpg" alt="Running Geek" style="margin: auto; display: block;"/>
+
+  <div style="margin: auto; text-align: center; font-size: 0.8em; color: grey;">老铁们关注走一走，不迷路</div>
+  
+</div>
+ -->
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2022/11/15/hello-world/" rel="next" title="Hello World">
+          Hello World
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+      </div>
+    </div>
+  
+
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="https://icekylin.github.io">首页</a> |
+        <a class="bottom-item" href="https://kylin.moe" target="_blank">主站</a> |
+        <a class="bottom-item" href="https://github.com/icekylin" target="_blank">GitHub</a> |
+        <!-- <a class="bottom-item" href="https://hexo.io" target="_blank">Powered by hexo</a> |
+        <a class="bottom-item" href="https://github.com/KevinOfNeu/hexo-theme-xoxo" target="_blank">Theme xoxo</a> -->
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+
+
+
+</body>
+</html>
