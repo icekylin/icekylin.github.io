@@ -11,16 +11,16 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="半自动化漏洞挖掘," />
+    <meta name="keywords" content="渗透实战," />
   
 
   
-    <meta name="description" content="记一次公益SRC上分思路" />
+    <meta name="description" content="【渗透实战】记一次公益SRC上分思路" />
   
   
   <!-- <link rel="icon" type="image/x-icon" href="/logo.png"> -->
   <link rel="icon" type="image/x-icon" href="/img/logo.svg">
-  <title>记一次公益SRC上分思路 [ icekylin7 Blog ]</title>
+  <title>【渗透实战】记一次公益SRC上分思路 [ icekylin7 Blog ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -67,7 +67,7 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        记一次公益SRC上分思路
+        【渗透实战】记一次公益SRC上分思路
       </h1>
       <span>
         
@@ -79,7 +79,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%8A%E8%87%AA%E5%8A%A8%E5%8C%96%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98/" rel="tag">半自动化漏洞挖掘</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98/" rel="tag">渗透实战</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -87,7 +87,7 @@
       <span id="busuanzi_value_page_pv"></span> 点击
     </span>
       <span class="slash">/</span>
-      <!-- <span class="read">阅读耗时 14 分钟</span> -->
+      <!-- <span class="read">阅读耗时 15 分钟</span> -->
     </header>
 
     <div class="post-content">
@@ -105,7 +105,7 @@
 <li>批量备案查询: <a target="_blank" rel="noopener" href="http://www.jucha.com/beian/">http://www.jucha.com/beian/</a></li>
 </ul>
 <h2 id="0x02-使用POC测试单个站点"><a href="#0x02-使用POC测试单个站点" class="headerlink" title="0x02 使用POC测试单个站点"></a>0x02 使用POC测试单个站点</h2><h3 id="1-寻找可利用POC"><a href="#1-寻找可利用POC" class="headerlink" title="1. 寻找可利用POC"></a>1. 寻找可利用POC</h3><p>使用佩奇文库：<a target="_blank" rel="noopener" href="http://wiki.peiqi.tech/wiki/cms/">http://wiki.peiqi.tech/wiki/cms/</a> 文库内部分漏洞存在可用POC，可提供我们测试学习，感谢大佬。</p>
-<p><img src="/../assets/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171557337.png" alt="image-20221115171557337"></p>
+<p><img src="/../assets/img/%E3%80%90%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171557337.png" alt="image-20221115171557337"></p>
 <p>主要针对 CMS 框架漏洞，框架漏洞有着清晰的指纹标识，方便批量寻找到目标。</p>
 <h3 id="2-使用空间测绘站寻找资产"><a href="#2-使用空间测绘站寻找资产" class="headerlink" title="2. 使用空间测绘站寻找资产"></a>2. 使用空间测绘站寻找资产</h3><p>并不是所有漏洞都有现成的POC，又因为CMS对应的资产并不少，要找到一个可以利用的POC不一定是一件简单的事情。推荐找 <strong>可以通过GET传参得到返回结果的SQL注入</strong> ，毕竟点进URL只要粘贴就可以验证是否存在漏洞。</p>
 <p>在文库内找到网络测绘搜索语句，使用 fofa、shodan、360quake 等测绘引擎搜索相关资产。</p>
@@ -114,11 +114,11 @@
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:example.com/search/index.php?keyword=1%25%32%37%25%32%30%25%36%31%25%36%65%25%36%34%25%32%30%25%32%38%25%36%35%25%37%38%25%37%34%25%37%32%25%36%31%25%36%33%25%37%34%25%37%36%25%36%31%25%36%63%25%37%35%25%36%35%25%32%38%25%33%31%25%32%63%25%36%33%25%36%66%25%36%65%25%36%33%25%36%31%25%37%34%25%32%38%25%33%30%25%37%38%25%33%37%25%36%35%25%32%63%25%32%38%25%37%33%25%36%35%25%36%63%25%36%35%25%36%33%25%37%34%25%32%30%25%37%35%25%37%33%25%36%35%25%37%32%25%32%38%25%32%39%25%32%39%25%32%63%25%33%30%25%37%38%25%33%37%25%36%35%25%32%39%25%32%39%25%32%39%25%32%33</span><br></pre></td></tr></table></figure>
 
 <p>当页面发挥结果中包含 数据库用户名称、数据库地址则代表存在漏洞，至此为止。以下为图片说明</p>
-<p><img src="/../assets/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171630787.png" alt="image-20221115171630787"></p>
+<p><img src="/../assets/img/%E3%80%90%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171630787.png" alt="image-20221115171630787"></p>
 <h2 id="0x03-批量对站点进行检测"><a href="#0x03-批量对站点进行检测" class="headerlink" title="0x03 批量对站点进行检测"></a>0x03 批量对站点进行检测</h2><h3 id="1-将收集结果URL保存至本地"><a href="#1-将收集结果URL保存至本地" class="headerlink" title="1. 将收集结果URL保存至本地"></a>1. 将收集结果URL保存至本地</h3><p>可以通过测绘站接口，或是工具简单的实现，如 <a target="_blank" rel="noopener" href="https://github.com/wgpsec/fofa_viewer">fofa_viewer</a></p>
-<p><img src="/../assets/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171636565.png" alt="image-20221115171636565"></p>
+<p><img src="/../assets/img/%E3%80%90%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171636565.png" alt="image-20221115171636565"></p>
 <p>将HOST字段保存至本地txt文件，此时你就得到了一个可能存在漏洞的站点列表。</p>
-<p><img src="/../assets/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171640822.png" alt="image-20221115171640822"></p>
+<p><img src="/../assets/img/%E3%80%90%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171640822.png" alt="image-20221115171640822"></p>
 <h3 id="2-编写POC或使用工具批量检测"><a href="#2-编写POC或使用工具批量检测" class="headerlink" title="2. 编写POC或使用工具批量检测"></a>2. 编写POC或使用工具批量检测</h3><p>这里稍微的犹豫了一下，要是用python requests写，那我要用到其他POC的时候，岂不是改起来很麻烦，之前了解过 <a target="_blank" rel="noopener" href="https://github.com/projectdiscovery/nuclei/blob/master/README_CN.md">https://github.com/projectdiscovery/nuclei/blob/master/README_CN.md</a> 或许可以通过这个实现？</p>
 <p>研究了一下，需要达成需求：向<code>https://example.com/search/index.php</code>发送指定 GET 请求，返回响应包内包含 <code>ORDER BY id DESC</code>字段的 URL，GET请求参数如下</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keyword=<span class="number">1</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">37</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">31</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">65</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">31</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">36</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">31</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">63</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">31</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">63</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">66</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">65</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">31</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">37</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">63</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">63</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">34</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">33</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">32</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">63</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">30</span>%<span class="number">25</span>%<span class="number">37</span>%<span class="number">38</span>%<span class="number">25</span>%<span class="number">33</span>%<span class="number">37</span>%<span class="number">25</span>%<span class="number">36</span>%<span class="number">35</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">39</span>%<span class="number">25</span>%<span class="number">32</span>%<span class="number">33</span></span><br></pre></td></tr></table></figure>
@@ -129,7 +129,7 @@
 <p>再看一下官方文档 <a target="_blank" rel="noopener" href="https://github.com/projectdiscovery/nuclei/blob/master/README_CN.md">https://github.com/projectdiscovery/nuclei/blob/master/README_CN.md</a> 使用参数调用模板文件获取扫描结果</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.调用 DocCMS-keyword-SQLi.yaml 模板，扫描 urls.txt 文件</span></span><br><span class="line"><span class="comment"># 2.将结果保存至 result_DocCMS-keyword-SQLi.txt</span></span><br><span class="line"><span class="comment"># 3.简化输出结果 重试次数10 超时时间30s</span></span><br><span class="line">nuclei -l urls.txt -t DocCMS-keyword-SQLi.yaml -o result_DocCMS-keyword-SQLi.txt -nm -retries 10 -<span class="built_in">timeout</span> 30</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../assets/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171647853.png" alt="image-20221115171647853"></p>
+<p><img src="/../assets/img/%E3%80%90%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171647853.png" alt="image-20221115171647853"></p>
 <p>然后哇的一下，扫描结果就全出来了</p>
 <p>使用 nuclei 编写 yaml 对批量检测漏洞有很大的帮助，不过根据官方的定义 nuclei 还可以用作渗透测试的工作流，这里留个个小小的坑</p>
 <h2 id="0x04-快速定位资产提交报告"><a href="#0x04-快速定位资产提交报告" class="headerlink" title="0x04 快速定位资产提交报告"></a>0x04 快速定位资产提交报告</h2><h3 id="1-正则筛选根域名"><a href="#1-正则筛选根域名" class="headerlink" title="1. 正则筛选根域名"></a>1. 正则筛选根域名</h3><p>因为扫描结果的URL并不是网站根域名，先简单针对扫描结果用正则匹配一下根域。）</p>
@@ -139,7 +139,7 @@
 <p>确认提交的平台, 漏洞盒子提交无限制, 补天需要百度权重&gt;&#x3D;1或Google权重&gt;&#x3D;3</p>
 <p>更多关于补天的注意事项可以参考这篇文章: <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37113223/article/details/111916474">关于补天SRC小白入门详细介绍</a> </p>
 <p>针对爱站PC、爱站PE、GooglePR筛选查询结果</p>
-<p><img src="/../assets/img/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171652516.png" alt="image-20221115171652516"></p>
+<p><img src="/../assets/img/%E3%80%90%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98%E3%80%91%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%85%AC%E7%9B%8ASRC%E4%B8%8A%E5%88%86%E6%80%9D%E8%B7%AF/image-20221115171652516.png" alt="image-20221115171652516"></p>
 <h3 id="3-批量查询备案信息"><a href="#3-批量查询备案信息" class="headerlink" title="3. 批量查询备案信息"></a>3. 批量查询备案信息</h3><p>提交漏洞报告时，需要对公司名称以及公司定位做选择，这里有三个选择</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://www.jucha.com/beian/">批量备案查询</a> 免费额度用完了需要付费，免费额度500条</li>
@@ -179,8 +179,8 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/posts/40921/" rel="next" title="关于安全的一些学习经历">
-          关于安全的一些学习经历
+          <a href="/posts/40921/" rel="next" title="【学习路线】入门级别的安全学习路线">
+          【学习路线】入门级别的安全学习路线
           </a>
         
       </div>
