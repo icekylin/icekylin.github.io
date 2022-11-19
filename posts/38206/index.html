@@ -20,7 +20,7 @@
   
   <!-- <link rel="icon" type="image/x-icon" href="/logo.png"> -->
   <link rel="icon" type="image/x-icon" href="/img/logo.svg">
-  <title>【渗透实战】记一次公益SRC上分思路 [ icekylin7 Blog ]</title>
+  <title>【渗透实战】记一次公益SRC上分思路 [ icekYlin7 blog ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -29,7 +29,7 @@
       <link rel="stylesheet" href="/css/xoxo.css">
     
   
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="icekylin7 Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="icekYlin7 blog" type="application/atom+xml">
 </head>
 
 
@@ -39,7 +39,7 @@
   <a class="pure-menu-heading" href="/">
     <!--[Origin]<img class="avatar" src="http://icekylin.github.io/images/logo.png"> -->
     <img class="avatar" src="https://q1.qlogo.cn/g?b=qq&nk=157668440&s=640">
-    <span class="title">icekylin7 Blog</span>
+    <span class="title">icekYlin7 blog</span>
   </a>
 
   <ul class="pure-menu-list clearfix">
@@ -150,16 +150,23 @@
 <p>对于 <strong>批量查询站点权重</strong>、<strong>批量查询备案信息</strong> 本来都是有想法写个脚本来实现的，奈何这些0权站点实在不能给人带来动力.</p>
 <p>提交漏洞的事情就交给另一个小倒霉蛋吧。</p>
 
-    </div>
-    <div style="color: gray; text-decoration:underline"><i>EOF</i></div>
+
+    <br>
+    <hr class="hr-solid-content" data-content="End of">
+    <!-- <div align="center" style="color: gray; text-decoration:underline"><i>End of</i></div> -->
   </article>
   <div class="toc-container">
-    
+    <!-- 
   <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">0x01 提前准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E4%BD%BF%E7%94%A8POC%E6%B5%8B%E8%AF%95%E5%8D%95%E4%B8%AA%E7%AB%99%E7%82%B9"><span class="toc-text">0x02 使用POC测试单个站点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%BB%E6%89%BE%E5%8F%AF%E5%88%A9%E7%94%A8POC"><span class="toc-text">1. 寻找可利用POC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E7%A9%BA%E9%97%B4%E6%B5%8B%E7%BB%98%E7%AB%99%E5%AF%BB%E6%89%BE%E8%B5%84%E4%BA%A7"><span class="toc-text">2. 使用空间测绘站寻找资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AF%95%E7%9B%B8%E5%85%B3%E8%B5%84%E4%BA%A7%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-text">3. 试相关资产漏洞是否存在</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E6%89%B9%E9%87%8F%E5%AF%B9%E7%AB%99%E7%82%B9%E8%BF%9B%E8%A1%8C%E6%A3%80%E6%B5%8B"><span class="toc-text">0x03 批量对站点进行检测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B0%86%E6%94%B6%E9%9B%86%E7%BB%93%E6%9E%9CURL%E4%BF%9D%E5%AD%98%E8%87%B3%E6%9C%AC%E5%9C%B0"><span class="toc-text">1. 将收集结果URL保存至本地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E5%86%99POC%E6%88%96%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7%E6%89%B9%E9%87%8F%E6%A3%80%E6%B5%8B"><span class="toc-text">2. 编写POC或使用工具批量检测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E8%B5%84%E4%BA%A7%E6%8F%90%E4%BA%A4%E6%8A%A5%E5%91%8A"><span class="toc-text">0x04 快速定位资产提交报告</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AD%A3%E5%88%99%E7%AD%9B%E9%80%89%E6%A0%B9%E5%9F%9F%E5%90%8D"><span class="toc-text">1. 正则筛选根域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2%E7%AB%99%E7%82%B9%E6%9D%83%E9%87%8D"><span class="toc-text">2. 批量查询站点权重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF"><span class="toc-text">3. 批量查询备案信息</span></a></li></ol></li></ol>
   </div>
+ -->
 
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E6%8F%90%E5%89%8D%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">0x01 提前准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E4%BD%BF%E7%94%A8POC%E6%B5%8B%E8%AF%95%E5%8D%95%E4%B8%AA%E7%AB%99%E7%82%B9"><span class="toc-text">0x02 使用POC测试单个站点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%BB%E6%89%BE%E5%8F%AF%E5%88%A9%E7%94%A8POC"><span class="toc-text">1. 寻找可利用POC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E7%A9%BA%E9%97%B4%E6%B5%8B%E7%BB%98%E7%AB%99%E5%AF%BB%E6%89%BE%E8%B5%84%E4%BA%A7"><span class="toc-text">2. 使用空间测绘站寻找资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%AF%95%E7%9B%B8%E5%85%B3%E8%B5%84%E4%BA%A7%E6%BC%8F%E6%B4%9E%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-text">3. 试相关资产漏洞是否存在</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E6%89%B9%E9%87%8F%E5%AF%B9%E7%AB%99%E7%82%B9%E8%BF%9B%E8%A1%8C%E6%A3%80%E6%B5%8B"><span class="toc-text">0x03 批量对站点进行检测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%B0%86%E6%94%B6%E9%9B%86%E7%BB%93%E6%9E%9CURL%E4%BF%9D%E5%AD%98%E8%87%B3%E6%9C%AC%E5%9C%B0"><span class="toc-text">1. 将收集结果URL保存至本地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E5%86%99POC%E6%88%96%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7%E6%89%B9%E9%87%8F%E6%A3%80%E6%B5%8B"><span class="toc-text">2. 编写POC或使用工具批量检测</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E8%B5%84%E4%BA%A7%E6%8F%90%E4%BA%A4%E6%8A%A5%E5%91%8A"><span class="toc-text">0x04 快速定位资产提交报告</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%AD%A3%E5%88%99%E7%AD%9B%E9%80%89%E6%A0%B9%E5%9F%9F%E5%90%8D"><span class="toc-text">1. 正则筛选根域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2%E7%AB%99%E7%82%B9%E6%9D%83%E9%87%8D"><span class="toc-text">2. 批量查询站点权重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF"><span class="toc-text">3. 批量查询备案信息</span></a></li></ol></li></ol>
+  </div>
 
   </div>
 </div>
@@ -196,7 +203,6 @@
       </div>
     </div>
   
-
 
     </div>
 
