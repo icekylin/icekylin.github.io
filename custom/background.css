@@ -1,0 +1,17 @@
+ #web_bg {
+    /* 背景图地址 */
+    /* background: url(https://s2.loli.net/2022/11/21/WwHKleAkLOD7ZJR.png); */
+    /* 平铺 */
+    background-repeat: no-repeat;
+    /* 背景图大小 */
+    background-size: cover;
+    opacity: 0
+}
+
+#page-header:not(.not-top-img):before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    content: '1';
+  }
