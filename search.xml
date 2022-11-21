@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>M1 Macbook Install Kali Linux Virtual Machine</title>
+      <link href="/posts/53187/"/>
+      <url>/posts/53187/</url>
+      
+        <content type="html"><![CDATA[<p>UTM 安装 Kali Linux Arm64 2022.3</p><p>相关链接:</p><ul><li>UTM: <a href="https://mac.getutm.app/">https://mac.getutm.app/</a> (UTM 虚拟机)</li><li>Kali-installer-images: <a href="https://www.kali.org/get-kali/#kali-installer-images">https://www.kali.org/get-kali/#kali-installer-images</a></li></ul><blockquote><p>主要解决安装时光标闪烁黑屏问题、以及后续的一些优化详情</p></blockquote><h3 id="安装-Kali-Linux"><a href="#安装-Kali-Linux" class="headerlink" title="安装 Kali Linux"></a>安装 Kali Linux</h3><h4 id="UTM-配置步骤"><a href="#UTM-配置步骤" class="headerlink" title="UTM 配置步骤"></a>UTM 配置步骤</h4><ol><li>UTM 新建虚拟机, 选择 “虚拟化”</li></ol><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121160057545.png"></p><ol start="2"><li>选择 Linux</li></ol><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121160117155.png"></p><ol start="3"><li>确保前面两个选项都未勾选, 下方启动光盘选择 iso 文件后点击下一步</li></ol><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121160144547.png"></p><ol start="4"><li>内存建议 4096M、CPU 核心数 4 哥, 可以启用硬件 OpenGL 加速</li></ol><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121160448407.png"></p><ol start="5"><li>指定存储驱动器的大小至少大于 30G</li></ol><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121160414511.png"></p><ol start="6"><li>选择一个文件夹共享, 使 kali 内部可以访问 (可以不选)</li></ol><p> <img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121160432045.png"></p><ol start="7"><li>设置名称 (或者跳过) 后直接保存, 如开机后出现黑屏请继续往下看</li></ol><h4 id="安装时光标闪烁黑屏无画面"><a href="#安装时光标闪烁黑屏无画面" class="headerlink" title="安装时光标闪烁黑屏无画面"></a>安装时光标闪烁黑屏无画面</h4><p>右键虚拟机打开编辑, 左侧添加一个 “串行端口”, 添加后不需要进行设置, 直接点击保存后启动 Kali</p><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121160908852.png"></p><p>启动后会出现两个窗口, 其中一个窗口作为串口映射, 可解决安装时的黑屏问题</p><p>注意: 串口映射后仍然只能使用第一个 <code>Install</code> 模式进行安装, 而不能选择第二个 <code>Graphical Install</code>, 随后安装步骤不做详细介绍, 最后一步要求重启 Kali Linux 时, 点击右上角 Drive image options 图标, 选择 iso 文件点击弹出 (Eject), 弹出后回车 Continue 直接重启计算机</p><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121161855411.png"></p><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121161816987.png"></p><p>安装完成后可在 “编辑 -&gt; 显示” 勾选高分辨率模式, 并右键之前添加的 “串行端口” 选择删除 (remove)</p><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121161125680.png"></p><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121164116341.png"></p><p>开机后依然黑屏尝试将 “显示” 设置中 “虚拟显卡” 修改为 <code>virtio-ramfb</code></p><p><img src="/../assets/img/M1%20Macbook%20Install%20Kali%20Linux%20Virtual%20Machine/image-20221121164444283.png"></p><h3 id="系统优化"><a href="#系统优化" class="headerlink" title="系统优化"></a>系统优化</h3><h4 id="更换-apt-源"><a href="#更换-apt-源" class="headerlink" title="更换 apt 源"></a>更换 apt 源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apt/sources.list</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#中科大源</span><br><span class="line">deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">#浙江大学源</span><br><span class="line">deb http://mirrors.zju.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.zju.edu.cn/kali kali-rolling main non-free contrib</span><br><span class="line">#阿里云源</span><br><span class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">#东软大学源</span><br><span class="line">deb http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">deb-src http://mirrors.neusoft.edu.cn/kali kali-rolling/main non-free contrib</span><br><span class="line">#新加坡kali源</span><br><span class="line">deb http://mirror.nus.edu.sg/kali/kali/ kali main non-free contrib</span><br><span class="line">deb-src http://mirror.nus.edu.sg/kali/kali/ kali main non-free contrib</span><br><span class="line">deb http://security.kali.org/kali-security kali/updates main contrib non-free</span><br><span class="line">deb http://mirror.nus.edu.sg/kali/kali-security kali/updates main contrib non-free</span><br><span class="line">deb-src http://mirror.nus.edu.sg/kali/kali-security kali/updates main contrib non-free</span><br><span class="line">#官方源</span><br><span class="line">deb http://http.kali.org/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://http.kali.org/kali kali-rolling main non-free contrib</span><br></pre></td></tr></table></figure><h4 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">apt list --upgradable</span><br><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt dist-upgrade</span><br><span class="line">sudo apt autoremove</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 安全工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UTM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python 字典按键 (Key) 或值 (Value) 排序</title>
+      <link href="/posts/10099/"/>
+      <url>/posts/10099/</url>
+      
+        <content type="html"><![CDATA[<ul><li><code>sorted(Iterable, key[, reverse=True/False])</code><ul><li>Iterable: 可迭代对象</li><li>key: 选取参与比较的元素</li><li>reverse: 是否倒序 (可选)</li></ul></li><li><code>gen_one2ten()</code> 用于生产随机字典</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gen_one2ten</span>():</span><br><span class="line"><span class="keyword">return</span> random.randint(<span class="number">0</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">dic = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    dic[gen_one2ten()] = gen_one2ten()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Originally: <span class="subst">&#123;dic&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_value_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_key_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Value Sorted: <span class="subst">&#123;dict_value_sort(dic)&#125;</span>&#x27;</span>)  <span class="comment"># Value 排序结果</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Key Sorted: <span class="subst">&#123;dict_key_sort(dic)&#125;</span>&#x27;</span>)      <span class="comment"># Key 排序结果</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python 多进程与多线程</title>
       <link href="/posts/3834/"/>
       <url>/posts/3834/</url>
@@ -13,7 +63,7 @@
       
       <categories>
           
-          <category> Develop </category>
+          <category> 编程开发 </category>
           
       </categories>
       
@@ -38,14 +88,14 @@
       
       <categories>
           
-          <category> 网络安全 </category>
+          <category> 渗透测试 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 渗透实战 </tag>
+            <tag> SRC </tag>
             
         </tags>
       
@@ -63,9 +113,9 @@
       
       <categories>
           
-          <category> 网络安全 </category>
-          
           <category> 编程开发 </category>
+          
+          <category> 网络安全 </category>
           
       </categories>
       
