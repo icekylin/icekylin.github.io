@@ -6,7 +6,7 @@
   <link href="http://icekylin.github.io/atom.xml" rel="self"/>
   
   <link href="http://icekylin.github.io/"/>
-  <updated>2022-11-21T08:45:02.678Z</updated>
+  <updated>2022-11-21T10:16:51.728Z</updated>
   <id>http://icekylin.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python 字典按键 (Key) 或值 (Value) 排序</title>
+    <link href="http://icekylin.github.io/posts/10099/"/>
+    <id>http://icekylin.github.io/posts/10099/</id>
+    <published>2022-11-21T09:57:00.000Z</published>
+    <updated>2022-11-21T10:16:51.728Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>字典根据 Key 或 Value 排序, 使用 <code>sorted</code> 函数和 <code>lambda</code> 表达式实现</p></blockquote><p><strong>1、Module</strong></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dict_sort.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_value_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_key_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure><p><strong>2、Explain</strong></p><p>sorted 函数</p><ul><li><code>sorted(Iterable, key[, reverse=True/False])</code><ul><li>Iterable: 可迭代对象</li><li>key: 选取参与比较的元素</li><li>reverse: 是否倒序 (可选)</li></ul></li></ul><p>gen_one2ten 函数</p><ul><li><code>gen_one2ten()</code> 用于随机生成键值都为 0~9 的字典</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gen_one2ten</span>():</span><br><span class="line"><span class="keyword">return</span> random.randint(<span class="number">0</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">dic = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    dic[gen_one2ten()] = gen_one2ten()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Originally: <span class="subst">&#123;dic&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_value_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_key_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Value Sorted: <span class="subst">&#123;dict_value_sort(dic)&#125;</span>&#x27;</span>)  <span class="comment"># Value 排序结果</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Key Sorted: <span class="subst">&#123;dict_key_sort(dic)&#125;</span>&#x27;</span>)      <span class="comment"># Key 排序结果</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;字典根据 Key 或 Value 排序, 使用 &lt;code&gt;sorted&lt;/code&gt; 函数和 &lt;code&gt;lambda&lt;/code&gt; 表达式实现&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;1、Module&lt;/strong&gt;&lt;/p&gt;</summary>
+      
+    
+    
+    
+    <category term="编程开发" scheme="http://icekylin.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="Python" scheme="http://icekylin.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>M1 Macbook Install Kali Linux Virtual Machine</title>
@@ -40,34 +67,6 @@
     
     
     <category term="UTM" scheme="http://icekylin.github.io/tags/UTM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 字典按键 (Key) 或值 (Value) 排序</title>
-    <link href="http://icekylin.github.io/posts/10099/"/>
-    <id>http://icekylin.github.io/posts/10099/</id>
-    <published>2022-11-21T07:57:00.000Z</published>
-    <updated>2022-11-21T09:43:31.863Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><code>sorted(Iterable, key[, reverse=True/False])</code><ul><li>Iterable: 可迭代对象</li><li>key: 选取参与比较的元素</li><li>reverse: 是否倒序 (可选)</li></ul></li><li><code>gen_one2ten()</code> 用于生产随机字典</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gen_one2ten</span>():</span><br><span class="line"><span class="keyword">return</span> random.randint(<span class="number">0</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">dic = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    dic[gen_one2ten()] = gen_one2ten()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Originally: <span class="subst">&#123;dic&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_value_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_key_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Value Sorted: <span class="subst">&#123;dict_value_sort(dic)&#125;</span>&#x27;</span>)  <span class="comment"># Value 排序结果</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Key Sorted: <span class="subst">&#123;dict_key_sort(dic)&#125;</span>&#x27;</span>)      <span class="comment"># Key 排序结果</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;sorted(Iterable, key[, reverse=True/False])&lt;/code&gt;&lt;ul&gt;
-&lt;li&gt;Iterable: 可迭代对象&lt;/li&gt;
-&lt;li&gt;key: 选取参与比较的元素&lt;/li&gt;
-&lt;li&gt;reverse: 是否倒序 (可选</summary>
-      
-    
-    
-    
-    <category term="编程开发" scheme="http://icekylin.github.io/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="Python" scheme="http://icekylin.github.io/tags/Python/"/>
     
   </entry>
   
