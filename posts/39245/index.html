@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="icekylin" />
+  <meta name="description" content="「十年饮冰，难凉热血」" />
+  
+  
+  <title>
+    
+      20分钟CSS快速入门教程 
+      
+      
+      |
+    
+     铁板烧卷冰淇淋
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="铁板烧卷冰淇淋" type="application/atom+xml">
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">icekylin</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Develop">
+          <a href="/categories/Develop">Develop</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Security">
+          <a href="/categories/Security">Security</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Planning">
+          <a href="/categories/Planning">Planning</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">20分钟CSS快速入门教程</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2022-12-01 19:36:00
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <p>reference:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mS4y1Z7Ga">https://www.bilibili.com/video/BV1mS4y1Z7Ga</a></li>
+</ul>
+<h2 id="0x01-CSS-语法-结构、类型"><a href="#0x01-CSS-语法-结构、类型" class="headerlink" title="0x01 CSS 语法 (结构、类型)"></a>0x01 CSS 语法 (结构、类型)</h2><h3 id="CSS-结构"><a href="#CSS-结构" class="headerlink" title="CSS 结构"></a>CSS 结构</h3><ul>
+<li>选择器 (Selector) 是用于选择 html 元素的, 选择器有很多种</li>
+<li>由一个开始大括号 (Open Curly Brace) <code>&#123;</code> 开始</li>
+<li>使用 <code>属性:属性值</code> (Property:Value) 来声明 (Declaration) 属性的属性值<ul>
+<li>声明可以有多个声明, 多个声明使用分号 <code>;</code> 分隔</li>
+</ul>
+</li>
+<li>最后使用结束大括号 <code>&#125;</code> 来结束 css 的定义</li>
+<li>由选择器、开始大括号、声明内容、结束大括号构成了 css 规则</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">1200px</span>;</span><br><span class="line">	<span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS-样式类型"><a href="#CSS-样式类型" class="headerlink" title="CSS 样式类型"></a>CSS 样式类型</h3><ul>
+<li>内敛样式 (Inline Style)<ul>
+<li>直接在 HTML 元素的内部定义 <code>style</code> 属性, 直接使用 <code>style=属性:属性值</code> 来定义, 此时没有选择器, 内联样式仅对当前 HTML 元素生效</li>
+</ul>
+</li>
+<li>样式 (Internal Style)<ul>
+<li>在 HTML 文件内使用 <code>&lt;style&gt;&lt;/style&gt;</code> 标签来定义样式, 内部可以有一个或多个规则, 内部样式仅对当前 HTML 文件生效</li>
+</ul>
+</li>
+<li>外部样式 (External Style)<ul>
+<li>通过把 <code>&lt;link&gt;</code> 标签放在 <code>&lt;head&gt;&lt;/head&gt;</code> 标签内, 通过指定 <code>&lt;link&gt;</code> 标签的 <code>href</code> 属性, 并指定 <code>rel</code> 属性为 <code>stylesheet</code> 来指定外部 css 文件路径, 从而引入外部样式表, 引入的样式也仅对当前 HTML 生效, 外部样式表是我们使用最多, 可以被其他 HTML 文件引入</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># style<span class="selector-class">.css</span></span><br><span class="line"><span class="selector-tag">h3</span>&#123;</span><br><span class="line"><span class="attribute">color</span>: blue</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># index.html</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style.css&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-tag">h2</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">color</span>: green</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&quot;color:red&quot;</span>&gt;</span>h1 标签<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>h2 标签<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>h3 标签<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-选择器-Selector"><a href="#0x02-选择器-Selector" class="headerlink" title="0x02 选择器 (Selector)"></a>0x02 选择器 (Selector)</h2><h3 id="常见基础选择器"><a href="#常见基础选择器" class="headerlink" title="常见基础选择器"></a>常见基础选择器</h3><ul>
+<li>类型选择器、类选择器、id 选择器和属性选择器都用于选择 HTML 元素</li>
+<li>类型选择器<ul>
+<li>用于选择页面上所有该类型的的元素, 直接选择 HTML 元素</li>
+</ul>
+</li>
+<li>类选择器<ul>
+<li>使用 <code>.类名</code> 来定义, 在 HTML 元素内指定 <code>class=类名</code> 就可以应用类选择器</li>
+</ul>
+</li>
+<li>id 选择器<ul>
+<li>使用 <code>#id名称</code> 来定义 id 选择器, 在 HTML 元素内指定 <code>id=id名称</code> 就可以应用 id 选择器</li>
+</ul>
+</li>
+<li>属性选择器<ul>
+<li>使用 <code>HTML标签[属性名]</code> 来定义属性选择器, 在标签内包含指定属性名称的元素, 都会应用属性选择器</li>
+<li>也可以使用 <code>HTML标签[属性名=&quot;属性内容&quot;]</code> 来定义属性选择器</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">h1</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: red</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.green_class</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: green</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-id">#orange_id</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: orange</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">p</span><span class="selector-attr">[color_blue]</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: blue</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">p</span><span class="selector-attr">[color=<span class="string">&quot;gray&quot;</span>]</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: gray</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>h1 标签<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;green_class&quot;</span>&gt;</span>指定了 class=&quot;green_class&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;orange_id&quot;</span>&gt;</span>指定了 id=&quot;orange_id&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">color</span>=<span class="string">&quot;gray&quot;</span>&gt;</span>p 标签内指定了 color=&quot;gray&quot;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../assets/img/20%E5%88%86%E9%92%9FCSS%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/image-20221201163343096.png"></p>
+<h3 id="组合使用选择器"><a href="#组合使用选择器" class="headerlink" title="组合使用选择器"></a>组合使用选择器</h3><ul>
+<li>通用选择器<ul>
+<li>使用 <code>*</code> 定义通用选择器, 会指定页面内所有 HTML 元素</li>
+</ul>
+</li>
+<li>组合选择器<ul>
+<li>选择器可以组合使用, 同时满足所有条件时, 选择器将会作用于对应的元素</li>
+</ul>
+</li>
+<li>选择器也可以使用逗号 <code>,</code> 分隔, 同时指定指定多个选择器</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">	*&#123;</span></span><br><span class="line"><span class="language-css">		<span class="attribute">font-size</span>: <span class="number">16px</span></span></span><br><span class="line"><span class="language-css">	&#125;</span></span><br><span class="line"><span class="language-css">	<span class="selector-tag">h1</span><span class="selector-class">.blue</span>&#123;</span></span><br><span class="line"><span class="language-css">		<span class="attribute">color</span>: blue</span></span><br><span class="line"><span class="language-css">	&#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">h1</span><span class="selector-id">#green</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: green</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-id">#id</span><span class="selector-class">.cls</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>:brown;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">18px</span></span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>指定了 class=&quot;blue&quot; 的 h1 标签<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;green&quot;</span>&gt;</span>指定了 id=&quot;green&quot; 的 h1 标签<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">&quot;id&quot;</span> <span class="attr">class</span>=<span class="string">&quot;cls&quot;</span>&gt;</span>指定了id=&quot;id&quot; class=&quot;cls&quot; 的 p 标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>指定多个选择器的 h2 标签<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>指定多个选择器的 h3 标签<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../assets/img/20%E5%88%86%E9%92%9FCSS%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/image-20221201163301649.png"></p>
+<h3 id="父级子级选择器"><a href="#父级子级选择器" class="headerlink" title="父级子级选择器"></a>父级子级选择器</h3><ul>
+<li>使用 <code>父级元素 子级元素&#123;&#125;</code> 定义父级子级选择器, 只有在父级元素下的子级元素受样式表的影响</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">h1</span> <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>:red</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">h2</span> <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: green</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">h3</span> <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: blue</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>一级标题下的 a 标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>二级标题下的 a 标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>三级标题下的 a 标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../assets/img/20%E5%88%86%E9%92%9FCSS%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/image-20221201163207966.png"></p>
+<h2 id="0x03-选择器优先级-Priority"><a href="#0x03-选择器优先级-Priority" class="headerlink" title="0x03 选择器优先级 (Priority)"></a>0x03 选择器优先级 (Priority)</h2><ul>
+<li>相同的规则按照加载顺序, 写在代码后面的优先级更高</li>
+<li>继承下来的样式优先级永远低于直接指定的样式</li>
+<li>内联样式优先级最高, <code>!important</code> 是个意外</li>
+<li>ID 选择器 (ID Selector) &gt; 类选择器 (Class Selector) &gt; 类型选择器 (Type Selector)<ul>
+<li>内部样式和外部样式的优先级没有区别, 主要在于在代码中的位置</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: blue</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: orange</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: green</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">p</span><span class="selector-class">.cls</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: red</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.imp</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: green<span class="meta">!important</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">h5</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: red</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.cls</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: green</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-id">#id</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: blue</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span>相同的规则按照加载顺序, 写在代码后面的优先级更高, 所以我是橙色而不是蓝色的<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我继承了 div 标签的样式, 我是绿色的<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;cls&quot;</span>&gt;</span>我继承了 div 标签的样式, 也同时被选择器指定了样式, 我是红色的<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: blue&quot;</span>&gt;</span>内联样式优先级最高, !important 是个意外<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: blue&quot;</span> <span class="attr">class</span>=<span class="string">&quot;imp&quot;</span>&gt;</span>.imp 指定了 !important 所以我绿了<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h5</span> <span class="attr">class</span>=<span class="string">&quot;cls&quot;</span> <span class="attr">id</span>=<span class="string">&quot;id&quot;</span>&gt;</span>ID 选择器 (ID Selector) &gt; 类选择器 (Class Selector)<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h5</span> <span class="attr">class</span>=<span class="string">&quot;cls&quot;</span>&gt;</span>类选择器 (Class Selector) &gt; 类型选择器 (Type Selector)<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../assets/img/20%E5%88%86%E9%92%9FCSS%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/image-20221201165151183.png"></p>
+<h2 id="0x04-盒子模型-Box-Model"><a href="#0x04-盒子模型-Box-Model" class="headerlink" title="0x04 盒子模型 (Box Model)"></a>0x04 盒子模型 (Box Model)</h2><ul>
+<li>盒子模型 (Box Model) 由四部分组成, CSS 中一切皆为盒子<ul>
+<li>在外部的叫外边距 (margin)</li>
+<li>向内一层的叫填充 (padding)</li>
+<li>分开外边距和填充的叫做边框 (Border)</li>
+<li>最中间包裹的是内容 (Content)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/../../assets/img/20%E5%88%86%E9%92%9FCSS%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/image-20221201165311486.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">500px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">500px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: orange;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">border</span>: <span class="number">3px</span> solid green;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* padding: 30px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        padding-top: 30px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        padding-bottom: 20px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        padding-left: 10px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        padding-right: 10px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        margin: 30px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        margin-top: 30px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        margin-bottom: 20px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        margin-left: 10px;</span></span></span><br><span class="line"><span class="comment"><span class="language-css">        margin-right: 10px; */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">9px</span> <span class="number">8px</span> <span class="number">7px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">7px</span> <span class="number">8px</span> <span class="number">9px</span> <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">    内从 (Content)</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../assets/img/20%E5%88%86%E9%92%9FCSS%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/image-20221201170023268.png"></p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/posts/52777/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2022-12-01 19:36:00
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/posts/57803/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-CSS-%E8%AF%AD%E6%B3%95-%E7%BB%93%E6%9E%84%E3%80%81%E7%B1%BB%E5%9E%8B"><span class="toc-text">0x01 CSS 语法 (结构、类型)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E7%BB%93%E6%9E%84"><span class="toc-text">CSS 结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E6%A0%B7%E5%BC%8F%E7%B1%BB%E5%9E%8B"><span class="toc-text">CSS 样式类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E9%80%89%E6%8B%A9%E5%99%A8-Selector"><span class="toc-text">0x02 选择器 (Selector)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">常见基础选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">组合使用选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E7%BA%A7%E5%AD%90%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">父级子级选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7-Priority"><span class="toc-text">0x03 选择器优先级 (Priority)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B-Box-Model"><span class="toc-text">0x04 盒子模型 (Box Model)</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'rGZ9kkLBUv2MMFBQAT5StlGZ-gzGzoHsz',
+        appKey: 'fG7LaLcyEuDUlihr06UJFBua',
+        placeholder: 'Just go go.',
+        avatar: 'retro',
+        lang: 'zh-CN'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/icekylin/">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/670041240">
+            <i class="iconfont icon-bilibili"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a href="https://icekylin.github.io">Copyright © 2022 icekylin</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+    <div class="footer-views">
+      
+          pv:<span id="busuanzi_value_site_pv"></span>
+        
+      
+      
+          uv:<span id="busuanzi_value_site_uv"></span>
+        
+      
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + 20%E5%88%86%E9%92%9FCSS%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B + '&url=' + http%3A%2F%2Ficekylin.github.io%2Fposts%2F39245%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://icekylin.github.io/posts/39245/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="icekylin" />
+  <meta name="description" content="「十年饮冰，难凉热血」" />
+  
+  
+  <title>
+    
+      HTML 30分钟入门教程 
+      
+      
+      |
+    
+     铁板烧卷冰淇淋
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="铁板烧卷冰淇淋" type="application/atom+xml">
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">icekylin</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Develop">
+          <a href="/categories/Develop">Develop</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Security">
+          <a href="/categories/Security">Security</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Planning">
+          <a href="/categories/Planning">Planning</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">HTML 30分钟入门教程</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2022-12-01 19:36:00
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <p>reference:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://deerchao.cn/tutorials/html/html.htm">https://deerchao.cn/tutorials/html/html.htm</a></li>
+</ul>
+<h2 id="什么是-HTML"><a href="#什么是-HTML" class="headerlink" title="什么是 HTML"></a>什么是 HTML</h2><ul>
+<li>超文本标记语言 (Hyper Text Mark-up Language, HTML)</li>
+<li>它规定了自己的语法规则，用来表示比“文本”更丰富的意义，比如图片，表格，链接等。</li>
+<li>浏览器（IE,FireFox等）软件知道HTML语言的语法，可以用来查看HTML文档。目前互联网上的绝大部分网页都是使用HTML编写的。</li>
+</ul>
+<h2 id="HTML是什么样的"><a href="#HTML是什么样的" class="headerlink" title="HTML是什么样的"></a>HTML是什么样的</h2><ul>
+<li>简单地来说，HTML的语法就是给文本加上表明文本含义的标签(Tag)，让用户（人或程序）能对文本得到更好的理解。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;  </span><br><span class="line">  &lt;head&gt;  </span><br><span class="line">    &lt;title&gt;第一个Html文档&lt;/title&gt;  </span><br><span class="line">  &lt;/head&gt;  </span><br><span class="line">  &lt;body&gt;  </span><br><span class="line">    欢迎访问&lt;a href=<span class="string">&quot;https://deerchao.cn&quot;</span>&gt;deerchao的个人网页&lt;/a&gt;!  </span><br><span class="line">  &lt;/body&gt;  </span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>所有的HTML文档都应该有一个<code>&lt;html&gt;</code>标签，<code>&lt;html&gt;</code> 标签可以包含两个部分: <code>&lt;head&gt;</code> 和<code>&lt;body&gt;</code>。</li>
+<li><code>&lt;head&gt;</code> 标签用于包含整个文档的一般信息，比如文档的标题 <code>&lt;title&gt;</code>，对整个文档的描述，文档的关键字等等。文档的具体内容就要放在 <code>&lt;body&gt;</code> 标签里了。</li>
+<li><code>&lt;a&gt;</code> 标签用于表示链接，在浏览器（如IE,Firefox等）中查看HTML文档时，点击 <code>&lt;a&gt;</code> 标签括起来的内容时，通常会跳转到另一个页面。这个要跳转到的页面的地址由 <code>&lt;a&gt;</code> 标签的 <code>href</code> 属性指定。上面的 <code>&lt;a href=&quot;https://deerchao.cn&quot;&gt;</code> 中，href属性的值就是<a target="_blank" rel="noopener" href="https://deerchao.cn./">https://deerchao.cn。</a></li>
+</ul>
+<h2 id="HTML文档可以包含的内容"><a href="#HTML文档可以包含的内容" class="headerlink" title="HTML文档可以包含的内容"></a>HTML文档可以包含的内容</h2><ul>
+<li>文本: HTML对文本的支持是最丰富的，你可以设置不同级别的标题，分段和换行，可以指定文本的语义和外观，可以说明文本是引用自其它的地方，等等等等。</li>
+<li>链接: 链接用来指出内容与另一个页面或当前页面某个地方有关。</li>
+<li>图片: 图片用于使页面更加美观，或提供更多的信息。</li>
+<li>列表: 列表用于说明一系列条目是彼此相关的。</li>
+<li>表格: 表格是按行与列将数据组织在一起的形式。也有不少人使用表格进行页面布局。</li>
+<li>表单: 表单通常由文本输入框，按钮，多选框，单选框，下拉列表等组成，使HTML页面更有交互性。</li>
+<li>框架: 框架使页面里能包含其它的页面。</li>
+</ul>
+<h2 id="HTML文档格式详细说明"><a href="#HTML文档格式详细说明" class="headerlink" title="HTML文档格式详细说明"></a>HTML文档格式详细说明</h2><ul>
+<li>在HTML文本中，用尖括号括起来的部分称为标签。如果想在正文里使用尖括号（或者大与号小与号，总之是同一个东西），必须使用字符转义，也就是说转换字符的原有意义。<code>&lt;</code> 应该使用 <code>&amp;lt</code>;代替，<code>&gt;</code> 则使用 <code>&amp;gt</code>;，至于 <code>&amp;</code> 符号本身,则应该使用 <code>&amp;amp;</code> 替代（不得不说的是有很多HTML文档没有遵循这个规则，常用的浏览器也都能够分析出&amp;到底是一个转义的开始，还是一个符号，但是这样做是不推荐的）。</li>
+<li>标签本质上是对它所包含的内容的说明，可能会有属性，来给出更多的信息。比如 <code>&lt;img&gt;</code> （图片）标签有 <code>src</code> 属性（用于指明图片的地址），<code>width</code> 和 <code>height</code> 属性（用于说明图片的宽度和高度）。HTML里能使用哪些标签，这些标签分别可以拥有哪些属性，这些都是有规定的，知道了这里说的基本知识之后，学习HTML其实也就是学习这些标签了。本文后面会对常用的HTML标签做出简短的介绍。</li>
+<li>标签通常有开始部分和结束部分（也被称为开始标签和结束标签），它们一起限定了这个标签所包含的内容。属性只能在开始标签中指定，属性值可以用单引号或双引号括起来。结束标签都以斜杠 <code>/</code> 加上标签名来表示。有时候，有些标签并不包含其它内容（只包括自己的属性，甚至连属性都没有），这种情况下，可以写成类似这样：<code>&lt;img src=&quot;logo.gif&quot; /&gt;</code>。注意最后的一个空格和一个反斜杠，它说明这个标签已经结束，不需要单独的结束标签了。</li>
+<li>某些标签包含的内容中还可以有新的标签，新的标签名甚至可能还可以与包含它的标签的名称相同（哪些标签可以包含标签，可以包含哪些标签也是有规定的）。比如说在 <code>&lt;div&gt;&lt;/div&gt;</code> 内再嵌套一个 <code>&lt;div&gt;&lt;/div&gt;</code> 在这种情况下，最后出现的标签应该最先结束。</li>
+<li>TML文档里所有的空白符（空格，Tab，换行，回车）会被浏览器忽略，唯一的例外是空格，对空格的处理方式是所有连续的空格被当成一个空格，不管有一个，还是两个，还是100个。之所以有这样的规则是因为忽略空白符能让使用HTML的作者以他觉得最方便的格式来排列内容，比如可以在每个标签开始后增加缩进，标签结束后减少缩进。由于英语文本中空格用得很普遍（用于分隔单词），所以对空格做了这样的特殊处理。如果要显示连续的空格（比如为了缩进），应该用 <code>&amp;nbsp;</code> 来代表空格。</li>
+</ul>
+<h2 id="常用标签介绍"><a href="#常用标签介绍" class="headerlink" title="常用标签介绍"></a>常用标签介绍</h2><h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><ul>
+<li>使用 <code>&lt;font&gt;</code> 标签可以改变字体, 字号, 文字颜色</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;6&quot;</span>&gt;</span>6<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">&quot;4&quot;</span>&gt;</span>4<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span> <span class="attr">size</span>=<span class="string">&quot;5&quot;</span>&gt;</span>红色的5<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">face</span>=<span class="string">&quot;黑体&quot;</span>&gt;</span>黑体的字<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>&lt;b&gt;</code> 加粗字体, <code>&lt;i&gt;</code> 斜体, <code>&lt;u&gt;</code> 下划线</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;Bold&lt;/b&gt;</span><br><span class="line">&lt;i&gt;italic&lt;/i&gt;</span><br><span class="line">&lt;u&gt;underline&lt;/u&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>还有一些标签，用来指出包含的文本有特殊的意义，比如<code>&lt;abbr&gt;</code>（表示缩写），<code>&lt;em&gt;</code>（表示强调），<code>&lt;strong&gt;</code>（表示更强地强调）,<code>&lt;cite&gt;</code>（表示引用），<code>&lt;address&gt;</code>（表示地址）等等。这些标签不是为了定义显示效果而存在的，所以从浏览器里看它们可能没有任何效果，也可能不同的浏览器对这些标签的显示效果完全不同。</li>
+<li><code>&lt;h1&gt;</code> ~ <code>&lt;h6&gt;</code>  由大到小定义了 1 ~ 6 级的标题</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>三级标题<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">h5</span>&gt;</span>五级标题<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><ul>
+<li>使用 <code>&lt;hr&gt;</code>  标签可以在页面上添加分割线, 可以通过 <code>witdh</code> 和 <code>color</code> 属性来控制分割线的长度和颜色</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hr</span> <span class="attr">width</span>=<span class="string">&quot;50%&quot;</span>, <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;img&gt;</code> 标签用于在页面上添加图片, <code>src</code> 属性用来指定图片的地址, 如果 <code>src</code> 指向的图片无法打开, 会显示 <code>alt</code> 属性的文本</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;http://example.com&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;图片未找到&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><ul>
+<li>超级链接用 <code>&lt;a&gt;</code> 标签表示, <code>href</code> 属性指定了链接的地址, <code>&lt;a&gt;</code> 标签可以包含文本, 也可以包含图片</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.baidu.com&quot;</span>&gt;</span>百度<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.google.com&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="分段换行"><a href="#分段换行" class="headerlink" title="分段换行"></a>分段换行</h3><ul>
+<li>由于 HTML 中的空白字符会被忽略, 可以通过 <code>&lt;p&gt;</code> 标签定义一个段落, 段落结束时会自动换行</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span> 第一段内容 <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span> 第二段内容 <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>也可以使用 <code>&lt;br&gt;</code> 标签来实现换行, <code>&lt;br&gt;</code> 也没有结束标签</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 <span class="tag">&lt;<span class="name">br</span>&gt;</span> 2 <span class="tag">&lt;<span class="name">br</span>&gt;</span> 3</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>有时，要把文档看作不同的部分组合起来的，比如一个典型的页面可能包括三个部分：页头，主体，页脚。<code>&lt;div&gt;</code>标签专门用于标明不同的部分：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>页面头部<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>主题内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>页面尾部<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><ul>
+<li>HTML文档在浏览器里通常是从左到右，从上到下地显示的，到了窗口右边就自动换行。为了实现分栏的效果，很多人使用表格 <code>&lt;table&gt;</code> 进行页面排版（虽然HTML里提供表格的本意不是为了排版）</li>
+<li><code>&lt;table&gt;</code> 标签里通常会包含几个 <code>&lt;tr&gt;</code> 标签，<code>&lt;tr&gt;</code> 代表表格里的一行。<code>&lt;tr&gt;</code> 标签又会包含<code>&lt;td&gt;</code> 标签，每个 <code>&lt;td&gt;</code> 代表一个单元格。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>2000<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>悉尼<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>2004<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>雅典<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span>2008<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>北京<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;tr&gt; </code>标签还可以被 <code>&lt;table&gt;</code> 里的 <code>&lt;thead&gt;</code>、<code> &lt;tbody&gt;</code> 或 <code>&lt;tfoot&gt;</code> 包含。它们分别代表表头，表正文，表脚。在打印网页的时候，如果表格很大，一页打印不完，<code>&lt;thead&gt;</code> 和 <code>&lt;tfoot&gt;</code> 将在每一页出现。</li>
+<li><code>&lt;th&gt;</code> 和 <code>&lt;td&gt;</code> 非常相似，也用在 <code>&lt;tr&gt;</code> 边，不同的是 <code>&lt;th&gt;</code> 代表这个单元格是它所在的行或列的标题。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>年龄<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>html<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>12<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>python<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">td</span>&gt;</span>11<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><ul>
+<li>表格用于表示二维数据（行，列），一维数据则用列表表示。列表可以分为无序列表 <code>&lt;ul&gt;</code>，有序列表<code>&lt;ol&gt;</code> 和定义列表 <code>&lt;dl&gt;</code>。前两种列表更常见一些，都用 <code>&lt;li&gt;</code> 标签包含列表项目。</li>
+<li>无序列表表示一系列类似的项目，它们之间没有先后顺序。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>Number 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>Number 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>Number 3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>第一步<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>第二步<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>第三步<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><ul>
+<li>最后谈一下框架，曾经非常流行的技术，框架使一个窗口里能同时显示多个文档。主框架页里面没有 <code>&lt;body&gt;</code> 标签，取代它的是 <code>&lt;frameset&gt;</code>。</li>
+<li><code>&lt;frameset&gt;</code> 标签的属性 <code>Rows</code> 和 <code>Cols</code> 用于指定框架集 (frameset) 里有多少行（列），以及每行（列）的高度（宽度）。</li>
+<li><code>&lt;frameset&gt;</code> 标签可以包含 <code>&lt;frame&gt;</code> 标签，每个 <code>&lt;frame&gt;</code> 标签代表一个文档（src属性指定文档的地址）。</li>
+<li>如果觉得这样的页面还不够复杂的话，还可以在 <code>&lt;frameset&gt;</code> 标签里包含 <code>&lt;frameset&gt;</code> 标签。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">frameset</span> <span class="attr">rows</span>=<span class="string">&quot;15%,*&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;top.html&quot;</span> <span class="attr">name</span>=<span class="string">title</span> <span class="attr">scrolling</span>=<span class="string">no</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">frameset</span> <span class="attr">cols</span>=<span class="string">&quot;20%,*&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;left.html&quot;</span> <span class="attr">name</span>=<span class="string">sidebar</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">frame</span> <span class="attr">src</span>=<span class="string">&quot;right.html&quot;</span> <span class="attr">name</span>=<span class="string">recipes</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">frameset</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="30分钟以后怎么办"><a href="#30分钟以后怎么办" class="headerlink" title="30分钟以后怎么办"></a>30分钟以后怎么办</h2><ul>
+<li><p>这篇文章只是让从没有接触过HTML的人对HTML有个初步的印象，所以很多东西都没有谈到。本文并没有列出HTML中所有的标签，对于列出的标签也没有介绍它们的全部属性。</p>
+</li>
+<li><p>另外，没有提到的东西里还包括我觉得非常重要的CSS, JavaScript, XHTML, XML, Web Standards，以及它们与HTML的关系。不过这些也不太可能在30分钟内学会，好在只要入了门，就能利用网上很多资源继续学习。当然，如果有一本纸质书，就更好了，这方面我推荐 《HTML与XHTML权威指南》。下面是一些我觉得不错的网上资源：</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.htmlcodetutorial.com/">HTML语言参考（英文）</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.bjpeu.edu.cn/~yanglb/html/">HTML教程</a></p>
+</li>
+</ul>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/posts/53187/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2022-12-01 19:36:00
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/posts/39245/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-HTML"><span class="toc-text">什么是 HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84"><span class="toc-text">HTML是什么样的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML%E6%96%87%E6%A1%A3%E5%8F%AF%E4%BB%A5%E5%8C%85%E5%90%AB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">HTML文档可以包含的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML%E6%96%87%E6%A1%A3%E6%A0%BC%E5%BC%8F%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-text">HTML文档格式详细说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E4%BB%8B%E7%BB%8D"><span class="toc-text">常用标签介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC"><span class="toc-text">文本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-text">图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5"><span class="toc-text">链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E6%8D%A2%E8%A1%8C"><span class="toc-text">分段换行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC"><span class="toc-text">表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-text">列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6"><span class="toc-text">框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#30%E5%88%86%E9%92%9F%E4%BB%A5%E5%90%8E%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-text">30分钟以后怎么办</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'rGZ9kkLBUv2MMFBQAT5StlGZ-gzGzoHsz',
+        appKey: 'fG7LaLcyEuDUlihr06UJFBua',
+        placeholder: 'Just go go.',
+        avatar: 'retro',
+        lang: 'zh-CN'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/icekylin/">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/670041240">
+            <i class="iconfont icon-bilibili"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a href="https://icekylin.github.io">Copyright © 2022 icekylin</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+    <div class="footer-views">
+      
+          pv:<span id="busuanzi_value_site_pv"></span>
+        
+      
+      
+          uv:<span id="busuanzi_value_site_uv"></span>
+        
+      
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + HTML%2030%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B + '&url=' + http%3A%2F%2Ficekylin.github.io%2Fposts%2F52777%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://icekylin.github.io/posts/52777/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -11,7 +11,7 @@
   
   <title>
     
-      Python Multi-Process &amp; Multi-Thread 
+      Python Multithreading &amp; Multiprocess 
       
       
       |
@@ -150,7 +150,7 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">Python Multi-Process & Multi-Thread</div>
+      <div class="post-title">Python Multithreading & Multiprocess</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
@@ -159,7 +159,13 @@
         
       </div>
       <div class="markdown-body">
-        <h2 id="1、并发编程理论"><a href="#1、并发编程理论" class="headerlink" title="1、并发编程理论"></a>1、并发编程理论</h2><blockquote>
+        <p>reference:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=I3E4MHTpABA">一个视频告诉你并发、并行、异步、同步的区别</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/whatisfantasy/p/6440585.html">搞定 Python 多线程和多进程</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/brucewong0516/article/details/84587522">详解threading模块：Condition类的使用（三）</a></li>
+</ul>
+<h2 id="1、并发编程理论"><a href="#1、并发编程理论" class="headerlink" title="1、并发编程理论"></a>1、并发编程理论</h2><blockquote>
 <p>本章节中同步和异步阻塞和非阻塞较难理解, 只做了浅显的介绍, 如果需要深层次理解可以参考 <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19732473">怎样理解阻塞非阻塞与同步异步的区别？</a> 问题下的回答</p>
 </blockquote>
 <h3 id="1-1-CPU-密集型与-I-x2F-O-密集型"><a href="#1-1-CPU-密集型与-I-x2F-O-密集型" class="headerlink" title="1-1 CPU 密集型与 I&#x2F;O 密集型"></a>1-1 CPU 密集型与 I&#x2F;O 密集型</h3><p>CPU 密集型 (CPU-bound):</p>
@@ -370,7 +376,7 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line">condition = threading.Condition()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">producer</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> condition.acquire():</span><br><span class="line">            <span class="keyword">global</span> count</span><br><span class="line">            <span class="keyword">if</span> count &lt;= <span class="number">3</span>:</span><br><span class="line">                count += <span class="number">10</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&#x27;生产者 +10 count=<span class="subst">&#123;count&#125;</span>&#x27;</span>)</span><br><span class="line">                condition.notify()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                condition.wait()</span><br><span class="line">            condition.release()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">consumer</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> condition.acquire():</span><br><span class="line">            <span class="keyword">global</span> count</span><br><span class="line">            <span class="keyword">if</span> count &gt; <span class="number">3</span>:</span><br><span class="line">                count -= <span class="number">1</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&#x27;消费者 -1: count=<span class="subst">&#123;count&#125;</span>&#x27;</span>)</span><br><span class="line">                time.sleep(<span class="number">0.5</span>)</span><br><span class="line">                condition.notify()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                condition.wait()</span><br><span class="line">            condition.release()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = threading.Thread(target=producer, args=())</span><br><span class="line">c = threading.Thread(target=consumer, args=())</span><br><span class="line">p.start()</span><br><span class="line">c.start()</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../assets/img/Python%20%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/image-20221120234217181.png"></p>
+<p><img src="/../assets/img/Python%20Multithreading%20&%20Multiprocess/image-20221120234217181.png"></p>
 <p>Reference:</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/brucewong0516/article/details/84587522">https://blog.csdn.net/brucewong0516/article/details/84587522</a></li>
@@ -470,11 +476,9 @@
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Output</span></span><br><span class="line">GET: https://www.python.org/</span><br><span class="line"><span class="number">50985</span> <span class="built_in">bytes</span> received <span class="keyword">from</span> https://www.python.org/</span><br><span class="line">GET: https://www.bilibili.com/</span><br><span class="line"><span class="number">4244</span> <span class="built_in">bytes</span> received <span class="keyword">from</span> https://www.bilibili.com/</span><br></pre></td></tr></table></figure>
 
-<p>Reference:</p>
+<p>补充说明:</p>
 <ul>
-<li>一个视频告诉你并发、并行、异步、同步的区别: <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=I3E4MHTpABA">https://www.youtube.com/watch?v=I3E4MHTpABA</a></li>
-<li>搞定 Python 多线程和多进程: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/whatisfantasy/p/6440585.html">https://www.cnblogs.com/whatisfantasy/p/6440585.html</a></li>
-<li>【python】详解threading模块：Condition类的使用（三）: <a target="_blank" rel="noopener" href="https://blog.csdn.net/brucewong0516/article/details/84587522">https://blog.csdn.net/brucewong0516/article/details/84587522</a></li>
+<li>全部完成后建议跟着 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bK411A7tV">Python 并发编程实战，用多线程、多进程、多协程加速程序运行</a> 巩固实战案例</li>
 </ul>
 
       </div>
@@ -848,7 +852,7 @@
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Python%20Multi-Process%20%26%20Multi-Thread + '&url=' + http%3A%2F%2Ficekylin.github.io%2Fposts%2F3834%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Python%20Multithreading%20%26%20Multiprocess + '&url=' + http%3A%2F%2Ficekylin.github.io%2Fposts%2F3834%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         

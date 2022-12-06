@@ -11,7 +11,7 @@
   
   <title>
     
-      Python 字典按键 (Key) 或值 (Value) 排序 
+      archive_a: 2022/12 
       
       
       |
@@ -105,147 +105,86 @@
 
 
       <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
 
+<!-- last: 按年份把文章分组，当前遍历到的年份 -->
+<!-- now: 当前遍历到的文章的发布年份 -->
 
-  <!-- LaTex Display -->
-
-  
-    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
-  
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      }
-    }
-  </script>
-
-
-
-
-
-  <!-- clipboard -->
-
-  
-    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
-  
-  
-<script src="/js/codeCopy.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">Python 字典按键 (Key) 或值 (Value) 排序</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-          2022-11-21 17:57:00
-        </span>
-        
-      </div>
-      <div class="markdown-body">
-        <blockquote>
-<p>字典根据 Key 或 Value 排序, 使用 <code>sorted</code> 函数和 <code>lambda</code> 表达式实现</p>
-</blockquote>
-<p><strong>1、Module</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dict_sort.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_value_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_key_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">0</span>]))</span><br></pre></td></tr></table></figure>
-
-<p><strong>2、Explain</strong></p>
-<p>sorted 函数</p>
-<ul>
-<li><code>sorted(Iterable, key[, reverse=True/False])</code><ul>
-<li>Iterable: 可迭代对象</li>
-<li>key: 选取参与比较的元素</li>
-<li>reverse: 是否倒序 (可选)</li>
-</ul>
-</li>
-</ul>
-<p>gen_one2ten 函数</p>
-<ul>
-<li><code>gen_one2ten()</code> 用于随机生成键值都为 0~9 的字典</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gen_one2ten</span>():</span><br><span class="line">	<span class="keyword">return</span> random.randint(<span class="number">0</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">dic = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    dic[gen_one2ten()] = gen_one2ten()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Originally: <span class="subst">&#123;dic&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_value_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dict_key_sort</span>(<span class="params">dic</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">dict</span>(<span class="built_in">sorted</span>(dic.items(), key=<span class="keyword">lambda</span> item:item[<span class="number">0</span>]))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Value Sorted: <span class="subst">&#123;dict_value_sort(dic)&#125;</span>&#x27;</span>)  <span class="comment"># Value 排序结果</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;Key Sorted: <span class="subst">&#123;dict_key_sort(dic)&#125;</span>&#x27;</span>)      <span class="comment"># Key 排序结果</span></span><br></pre></td></tr></table></figure>
-
-      </div>
-      
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-              <a href="/posts/53187/" target="_self">
-                <i class="iconfont icon-chevronleft"></i>
-                <span>上一页</span>
-              </a>
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-              2022-11-21 17:57:00
-            </span>
-            
-          </div>
-          <div class="post-foot-prev">
-            
-          </div>
+<div class="container archives">
+  <div class="post-list">
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2022</span>
+          </h2>
         </div>
       
-    </div>
+      <div class="post-item" title="Python 并发编程实战，用多线程、多进程和多协程加速程序运行">
+        <div class="time-m-d">12-01</div>
+        <div class="title">
+          <a href="/posts/57803/">
+            <span>Python 并发编程实战，用多线程、多进程和多协程加速程序运行</span>
+          </a>
+        </div>
+      </div>
     
-
+      <div class="post-item" title="20分钟CSS快速入门教程">
+        <div class="time-m-d">12-01</div>
+        <div class="title">
+          <a href="/posts/39245/">
+            <span>20分钟CSS快速入门教程</span>
+          </a>
+        </div>
+      </div>
     
-      <div class="comments-container">
-        
-
-
-
-
-  
-    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
-  
-
-  <div id="vcomments"></div>
-
-  <script>
-    function loadValineSuc() {
-      new Valine({
-        el: '#vcomments',
-        appId: 'rGZ9kkLBUv2MMFBQAT5StlGZ-gzGzoHsz',
-        appKey: 'fG7LaLcyEuDUlihr06UJFBua',
-        placeholder: 'Just go go.',
-        avatar: 'retro',
-        lang: 'zh-CN'
-      })
-    }
-  </script>
-
-    <style>
-      .comments-container .v .vempty {
-        display: none!important;
-      }
-    </style>
-
-
-
-
+      <div class="post-item" title="HTML 30分钟入门教程">
+        <div class="time-m-d">12-01</div>
+        <div class="title">
+          <a href="/posts/52777/">
+            <span>HTML 30分钟入门教程</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="M1 Macbook Install Kali Linux Virtual Machine">
+        <div class="time-m-d">11-21</div>
+        <div class="title">
+          <a href="/posts/53187/">
+            <span>M1 Macbook Install Kali Linux Virtual Machine</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Python Multithreading & Multiprocess">
+        <div class="time-m-d">11-15</div>
+        <div class="title">
+          <a href="/posts/3834/">
+            <span>Python Multithreading & Multiprocess</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="记一次公益 SRC 上分思路">
+        <div class="time-m-d">09-15</div>
+        <div class="title">
+          <a href="/posts/38206/">
+            <span>记一次公益 SRC 上分思路</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Cyber Security Quick Start">
+        <div class="time-m-d">09-10</div>
+        <div class="title">
+          <a href="/posts/40921/">
+            <span>Cyber Security Quick Start</span>
+          </a>
+        </div>
       </div>
     
   </div>
-
+</div>
 
         
 <div class="footer">
@@ -523,24 +462,6 @@
 
 
         
-  
-    <div class="share-icon tools-bar-item">
-      <a href="javascript: void(0)" id="share-icon">
-        <i class="iconfont iconshare"></i>
-      </a>
-      <div class="share-content hidden">
-        
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Python%20%E5%AD%97%E5%85%B8%E6%8C%89%E9%94%AE%20(Key)%20%E6%88%96%E5%80%BC%20(Value)%20%E6%8E%92%E5%BA%8F + '&url=' + http%3A%2F%2Ficekylin.github.io%2Fposts%2F10099%2F + '" target="_blank" title="Twitter">
-            <i class="iconfont icon-twitter"></i>
-          </a>
-        
-        
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://icekylin.github.io/posts/10099/" target="_blank" title="Facebook">
-            <i class="iconfont icon-facebooksquare"></i>
-          </a>
-        
-      </div>
-    </div>
   
   
 <script src="/js/shares.js"></script>

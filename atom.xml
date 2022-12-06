@@ -6,7 +6,7 @@
   <link href="http://icekylin.github.io/atom.xml" rel="self"/>
   
   <link href="http://icekylin.github.io/"/>
-  <updated>2022-12-06T02:37:14.806Z</updated>
+  <updated>2022-12-06T17:27:32.123Z</updated>
   <id>http://icekylin.github.io/</id>
   
   <author>
@@ -17,19 +17,20 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python 字典按键 (Key) 或值 (Value) 排序</title>
-    <link href="http://icekylin.github.io/posts/10099/"/>
-    <id>http://icekylin.github.io/posts/10099/</id>
-    <published>2022-11-21T09:57:00.000Z</published>
-    <updated>2022-12-06T02:37:14.806Z</updated>
+    <title>Python 并发编程实战，用多线程、多进程和多协程加速程序运行</title>
+    <link href="http://icekylin.github.io/posts/57803/"/>
+    <id>http://icekylin.github.io/posts/57803/</id>
+    <published>2022-12-01T11:39:00.000Z</published>
+    <updated>2022-12-06T17:27:32.123Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;字典根据 Key 或 Value 排序, 使用 &lt;code&gt;sorted&lt;/code&gt; 函数和 &lt;code&gt;lambda&lt;/code&gt;</summary>
+    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
         
       
     
@@ -43,11 +44,65 @@
   </entry>
   
   <entry>
+    <title>20分钟CSS快速入门教程</title>
+    <link href="http://icekylin.github.io/posts/39245/"/>
+    <id>http://icekylin.github.io/posts/39245/</id>
+    <published>2022-12-01T11:36:00.000Z</published>
+    <updated>2022-12-06T17:22:39.549Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Develop" scheme="http://icekylin.github.io/categories/Develop/"/>
+    
+    
+    <category term="CSS" scheme="http://icekylin.github.io/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTML 30分钟入门教程</title>
+    <link href="http://icekylin.github.io/posts/52777/"/>
+    <id>http://icekylin.github.io/posts/52777/</id>
+    <published>2022-12-01T11:36:00.000Z</published>
+    <updated>2022-12-06T17:22:01.105Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Develop" scheme="http://icekylin.github.io/categories/Develop/"/>
+    
+    
+    <category term="HTML" scheme="http://icekylin.github.io/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
     <title>M1 Macbook Install Kali Linux Virtual Machine</title>
     <link href="http://icekylin.github.io/posts/53187/"/>
     <id>http://icekylin.github.io/posts/53187/</id>
     <published>2022-11-21T07:57:00.000Z</published>
-    <updated>2022-12-06T02:39:18.368Z</updated>
+    <updated>2022-12-06T17:29:46.022Z</updated>
     
     
       
@@ -55,9 +110,11 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;主要解决安装时光标闪烁黑屏问题、以及后续的一些优化详情, 相关链接已置于文末&lt;br&gt;&lt;a href=&quot;http://localhost:4000/&quot;&gt;http://localhost:4000/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主要解决安装时光标闪烁黑屏问题、以及后续的一些优化详情, 相关链接已置于文末&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3</summary>
+&lt;p&gt;reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
         
       
     
@@ -71,19 +128,21 @@
   </entry>
   
   <entry>
-    <title>Python Multi-Process &amp; Multi-Thread</title>
+    <title>Python Multithreading &amp; Multiprocess</title>
     <link href="http://icekylin.github.io/posts/3834/"/>
     <id>http://icekylin.github.io/posts/3834/</id>
     <published>2022-11-15T06:16:00.000Z</published>
-    <updated>2022-12-06T08:05:35.925Z</updated>
+    <updated>2022-12-06T17:28:52.633Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;1、并发编程理论&quot;&gt;&lt;a href=&quot;#1、并发编程理论&quot; class=&quot;headerlink&quot; title=&quot;1、并发编程理论&quot;&gt;&lt;/a&gt;1、并发编程理论&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;本章节中同步和异步阻塞和非阻塞较难理解, 只做了浅显的介绍,</summary>
+    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=I3E4MHTpABA&quot;&gt;一个视频告诉你并发、并行、异步、同步的区别&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
         
       
     
@@ -97,11 +156,11 @@
   </entry>
   
   <entry>
-    <title>记一次公益SRC上分思路</title>
+    <title>记一次公益 SRC 上分思路</title>
     <link href="http://icekylin.github.io/posts/38206/"/>
     <id>http://icekylin.github.io/posts/38206/</id>
     <published>2022-09-14T16:00:00.000Z</published>
-    <updated>2022-11-30T14:26:39.368Z</updated>
+    <updated>2022-12-06T17:18:58.469Z</updated>
     
     
       
@@ -129,7 +188,7 @@
     <link href="http://icekylin.github.io/posts/40921/"/>
     <id>http://icekylin.github.io/posts/40921/</id>
     <published>2022-09-09T16:00:00.000Z</published>
-    <updated>2022-12-06T02:52:02.676Z</updated>
+    <updated>2022-12-06T17:18:58.471Z</updated>
     
     
       

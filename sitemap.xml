@@ -2,7 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://icekylin.github.io/posts/53187/</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://icekylin.github.io/posts/3834/</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://icekylin.github.io/posts/57803/</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://icekylin.github.io/posts/39245/</loc>
+    
+    <lastmod>2022-12-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://icekylin.github.io/posts/52777/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -20,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/posts/53187/</loc>
+    <loc>http://icekylin.github.io/posts/38206/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -38,25 +74,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/posts/10099/</loc>
-    
-    <lastmod>2022-12-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://icekylin.github.io/templates/notes_templates.html</loc>
-    
-    <lastmod>2022-11-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://icekylin.github.io/posts/38206/</loc>
     
     <lastmod>2022-11-30</lastmod>
     
@@ -110,6 +128,20 @@
 
   
   <url>
+    <loc>http://icekylin.github.io/tags/CSS/</loc>
+    <lastmod>2022-12-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://icekylin.github.io/tags/HTML/</loc>
+    <lastmod>2022-12-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://icekylin.github.io/tags/Roadmap/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -140,14 +172,14 @@
 
   
   <url>
-    <loc>http://icekylin.github.io/categories/Planning/</loc>
+    <loc>http://icekylin.github.io/categories/Develop/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/categories/Develop/</loc>
+    <loc>http://icekylin.github.io/categories/Planning/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

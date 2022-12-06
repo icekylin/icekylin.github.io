@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="icekylin" />
+  <meta name="description" content="「十年饮冰，难凉热血」" />
+  
+  
+  <title>
+    
+      Python 并发编程实战，用多线程、多进程和多协程加速程序运行 
+      
+      
+      |
+    
+     铁板烧卷冰淇淋
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.ico">
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="铁板烧卷冰淇淋" type="application/atom+xml">
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">icekylin</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Develop">
+          <a href="/categories/Develop">Develop</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Security">
+          <a href="/categories/Security">Security</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/Planning">
+          <a href="/categories/Planning">Planning</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Python 并发编程实战，用多线程、多进程和多协程加速程序运行</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2022-12-01 19:39:00
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <p>reference:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bK411A7tV/">https://www.bilibili.com/video/BV1bK411A7tV/</a></li>
+</ul>
+<h3 id="0x00-引言"><a href="#0x00-引言" class="headerlink" title="0x00 引言"></a>0x00 引言</h3><h4 id="Python-并发编程简介"><a href="#Python-并发编程简介" class="headerlink" title="Python 并发编程简介"></a>Python 并发编程简介</h4><ol>
+<li>为什么要引入并发编程<ul>
+<li>场景1: 普通爬虫需要花费长时间的任务, 通过并发编程可以减少花费时间</li>
+<li>场景2: APP 应用, 后台有大部分请求资源, 使用异步并发可以降低延迟</li>
+<li>引入并发, 提升程序运行速度</li>
+<li>学习掌握并发编程技术, 是程序员不可缺少的技能</li>
+</ul>
+</li>
+<li>有哪些程序提速的方法<ul>
+<li>可以通过四种方式提升程序运行速度: 单线程串行(不加改造的程序)、多线程并发(threading)、多CPU并行(multiprocessing)、多机器并行 (hadoop&#x2F;hive&#x2F;spark)</li>
+<li>本节课程不会介绍多机器并行方式, 主要使用 threading、multiprocessing</li>
+</ul>
+</li>
+<li>Python对并发编程的支持<ul>
+<li>多线程: threading, 利用 CPU 和 IO 可以同时执行的原理, 让 CPU 不会干巴巴等待 IO 完成</li>
+<li>多进程: multiprocessing, 利用多核心 CPu 的能力, 真正的并行执行任务</li>
+<li>异步 IO: asyncio, 在单线程利用 CPU 和 IO 同时执行的原理, 实现函数异步执行</li>
+<li>使用 Lock 对资源枷锁, 防止冲突访问</li>
+<li>使用 Queue 实现不同进程&#x2F;现成间的数据通信, 实现生产者-消费者模式</li>
+<li>使用线程池 Pool&#x2F;进程池 Pool, 简化线程&#x2F;进程的任务提交、等待结束、获取结果</li>
+<li>使用 subprocess 启动外部程序的进程, 并进行输入输出交互</li>
+</ul>
+</li>
+</ol>
+<h4 id="怎样选择多线程、多进程和多协程"><a href="#怎样选择多线程、多进程和多协程" class="headerlink" title="怎样选择多线程、多进程和多协程"></a>怎样选择多线程、多进程和多协程</h4><ol>
+<li>什么是 CPU 密集型计算、IO 密集型计算?<ul>
+<li>CPU-bound (CPU 密集型)<ul>
+<li>程序运行的速度受到 CPU 的限制</li>
+<li>CPU 密集型也叫计算密集型, 是指 I&#x2F;O 在很的短时间内就可以完成, CPU 需要大量的计算和处理, 特点是 CPU 占用率相当高</li>
+<li>例如: 压缩解压缩、加密解密、正则表达式搜索</li>
+</ul>
+</li>
+<li>I&#x2F;O-bound (IO 密集型)<ul>
+<li>程序运行的速度受到 I&#x2F;O 的限制</li>
+<li>IO 密集型是指系统运作大部分的情况下是 CPU 在等待 I&#x2F;O (硬盘&#x2F;内存) 的读&#x2F;写操作, CPU 实际占用率较低</li>
+<li>例如: 文件处理程序、网络爬虫程序、读写数据库程序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多线程、多进程、多协程的对比<ul>
+<li>多进程 Process (multiprocessing)、多线程 Thread (threading)、多协程 Coroutine (asyncio)</li>
+<li>一个进程中, 可以启动 N 个线程、一个线程中, 可以启动 N 个协程</li>
+<li>多线程 Thread<ul>
+<li>相比进程, 更轻量级, 占用资源少, 但在 Python 中多线程只能并发执行, 不能利用多 CPU (GIL 锁限制)</li>
+<li>相比协程, 启动数目有限制, 占用内存资源, 有线程切换开销</li>
+<li>主要适用于 I&#x2F;O 密集型计算、同时运行的任务数目要求不多</li>
+</ul>
+</li>
+<li>多进程 Process<ul>
+<li>可以利用多核 CPU 并行运算, 但占用资源最多, 可启动数目最少</li>
+<li>主要适用于 CPU 密集型计算</li>
+</ul>
+</li>
+<li>多协程 Coroutine<ul>
+<li>内存开销最少, 启动协程数量最多, 缺点在于支持的库有限制, 如 requests 不支持协程, 需要使用 aiohttp 代替, 实现代码相对复杂</li>
+<li>适用于 I&#x2F;O 密集型计算、需要超多任务运行、拥有现成库支持的场景</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="/../assets/img/Python%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%8C%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E5%8D%8F%E7%A8%8B%E5%8A%A0%E9%80%9F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C/image-20221130165744847.png"></p>
+<h4 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL 全局解释器锁"></a>GIL 全局解释器锁</h4><p>相比 C&#x2F;C++&#x2F;Java, Python 确实慢, 在一些特殊场景下, Python 比 C++ 慢 100~200 倍</p>
+<p>由于速度慢的原因, 很多公司的基础架构代码仍然在使用 C&#x2F;C++ 开发, 比如各大公司阿里、腾讯、快手的推荐引擎、搜索引擎、存储引擎等对性能要求高的模块</p>
+<ol>
+<li><p>Python 速度慢的原因:</p>
+<ul>
+<li>Python 是动态类型语言, 不像 C&#x2F;Java 需要编译后再执行, 而 Python 需要边解释边执行, Python 中的变量可以是数字也可以是字符, 同样在程序运行时, 需要不断检查变量的类型</li>
+<li>Python 存在 GIL 锁, 无法利用多核 CPU 并发执行</li>
+</ul>
+</li>
+<li><p>全局解释器锁 (Global Interpreter Lock, GIL)</p>
+<ul>
+<li>GIL 是计算机程序设计语言解释器用于同步的一种机制, 它使得任何时刻仅有一个线程在执行。即使在多核心处理器上, 使用 GIL 的解释器也只允许统一时间执行一个进程</li>
+<li>With the GIL, you get cooperative multitasking<br>  <img src="/../assets/img/Python%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%8C%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E5%8D%8F%E7%A8%8B%E5%8A%A0%E9%80%9F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C/image-20221130143125784.png"></li>
+<li>When a thread is running, it holds the GIL</li>
+<li>GIL released on I&#x2F;O (read,write,send,recv,etc.)</li>
+</ul>
+</li>
+<li><p>为何会有 GIL 解释器锁</p>
+<ul>
+<li>Python 设计的初期, 为了规避并发问题引入了 GIL, 而到现在因为大部分都库都依赖于 GIL 而运行, 现在想去除而又去不掉了</li>
+<li>GIL 主要存在的目的是为解决线程之间数据完整性和状态同步的问题, Python 中的对象管理, 是使用引用计数器进行的, 引用数为 0 则释放对象</li>
+</ul>
+</li>
+<li><p>怎样规避 GIL 带来的限制</p>
+</li>
+</ol>
+<p>多线程 threading 机制仍然是有用的, 用于 IO 密集型计算</p>
+<ul>
+<li>在 I&#x2F;O (read, write, send, recv, etc.) 期间, 线程会释放 GIL, 实现 CPU 和 IO 的并行, 因此在多线程用于 IO 密集型计算仍然可以大幅提升速度</li>
+<li>但是多线程用于 CPU 密集型计算时, 只会更加拖慢速度</li>
+</ul>
+<p>使用 multiprocessing 的多进程机制实现并行计算、利用多核 CPU 优势, 为了应对 GIL 的问题, Python 提供了 multiprocessing</p>
+<h3 id="0x01-利用多线程加速爬虫程序"><a href="#0x01-利用多线程加速爬虫程序" class="headerlink" title="0x01 利用多线程加速爬虫程序"></a>0x01 利用多线程加速爬虫程序</h3><h4 id="Python-创建多线程的方式"><a href="#Python-创建多线程的方式" class="headerlink" title="Python 创建多线程的方式"></a>Python 创建多线程的方式</h4><ul>
+<li>首先准备任意一个函数</li>
+<li>使用 <code>import threading</code> 导入多线程模块</li>
+<li>使用 <code>t = threading.Thread(target=函数名称, args=(参数,))</code> 实例化一个线程对象</li>
+<li>使用 <code>t.strat()</code> 启动这个线程, 使用 <code>t.join()</code> 等待这个线程结束</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">name</span>):</span><br><span class="line">	<span class="built_in">print</span>(name)</span><br><span class="line"></span><br><span class="line">t = threading.Thread(target=func, args=(<span class="string">&quot;Python&quot;</span>,))</span><br><span class="line">t.start()</span><br><span class="line">t.join()</span><br></pre></td></tr></table></figure>
+
+<h4 id="单线程爬虫-VS-多线程爬虫速度对比"><a href="#单线程爬虫-VS-多线程爬虫速度对比" class="headerlink" title="单线程爬虫 VS 多线程爬虫速度对比"></a>单线程爬虫 VS 多线程爬虫速度对比</h4><ul>
+<li>首先创建一个 <code>craw()</code> 函数, 调用 <code>requests</code> 模块, 向页面发送请求并返回 url 和页面长度</li>
+<li>使用 for 循环结构依次调用 <code>craw()</code> 函数, 实现单线程调用, 并计算运行时间</li>
+<li>使用 <code>threads</code> 变量存储线程对象, 并依此添加所有 url, 通过 for 循环所有线程对象启动和终止</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">craw</span>(<span class="params">url</span>):</span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    <span class="built_in">print</span>(url, <span class="built_in">len</span>(r.text))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    urls = [</span><br><span class="line">        <span class="string">f&quot;https://www.cnblogs.com/sitehome/p/<span class="subst">&#123;page&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">51</span>)</span><br><span class="line">    ]</span><br><span class="line">    <span class="comment"># single thread running</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;single thread running&#x27;</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">        craw(url)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;singe thread cost <span class="subst">&#123;time.time() - start_time&#125;</span> seconds.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># multi thread running</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;multi thread running&#x27;</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    threads = []</span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">        threads.append(threading.Thread(target=craw, args=(url,)))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> thread <span class="keyword">in</span> threads:</span><br><span class="line">        thread.start()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> thread <span class="keyword">in</span> threads:</span><br><span class="line">        thread.join()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;multi thread cost <span class="subst">&#123;time.time() - start_time&#125;</span> seconds.&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 程序运行结果</span><br><span class="line">single thread running</span><br><span class="line">https://www.cnblogs.com/sitehome/p/1 68683</span><br><span class="line">...</span><br><span class="line">https://www.cnblogs.com/sitehome/p/50 69779</span><br><span class="line">singe thread cost 3.5241050720214844 seconds.</span><br><span class="line">multi thread running</span><br><span class="line">https://www.cnblogs.com/sitehome/p/5 69428</span><br><span class="line">...</span><br><span class="line">https://www.cnblogs.com/sitehome/p/29 69997</span><br><span class="line">multi thread cost 0.5849659442901611 seconds.</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-生产者消费者模式多线程爬虫"><a href="#0x02-生产者消费者模式多线程爬虫" class="headerlink" title="0x02 生产者消费者模式多线程爬虫"></a>0x02 生产者消费者模式多线程爬虫</h2><h3 id="Pipeline-技术架构和生产者消费者模型"><a href="#Pipeline-技术架构和生产者消费者模型" class="headerlink" title="Pipeline 技术架构和生产者消费者模型"></a>Pipeline 技术架构和生产者消费者模型</h3><ol>
+<li>多组件的 Pipeline 技术架构<ul>
+<li>复杂的事情不会一下子做完, 而是分很多中间步骤一步步完成</li>
+<li>比如说一个程序从输入数据到输出数据, 中间会经过多个处理器 (Processor), 每个处理器是一个处理模块, 这种将数据通过多个模块来处理的技术架构叫做 Pipeline 架构</li>
+<li>生产者消费者模式就是典型的 Pipeline 架构, 生产者生产数据后, 会传递给消费者来消费数据</li>
+<li>生产者传入的数据作为生产原料, 消费者输出的内容作为输出数据</li>
+</ul>
+</li>
+<li>生产者消费者爬虫的架构<ul>
+<li>生产者消费者架构相当于内部有两个 Processor</li>
+<li>第一个 Processor 获取待爬取的 URL 进行网页的下载, 将下载好的内容放进一个 “网页队列”</li>
+<li>第二个 Processor 消费 “网页队列” 中的数据进行解析, 并且把解析的结果进行存储</li>
+</ul>
+</li>
+<li>Python 创建线程队列的方式<ul>
+<li>使用 queue.Queue 可以用于多线程之间的、线程安全的数据通信</li>
+<li>使用 <code>import queue</code> 导入队列类库</li>
+<li>使用 <code>q = queueQueue()</code> 创建队列对象</li>
+<li>使用 <code>q.put(item)</code> 添加元素<ul>
+<li>当队列元素已满时会发生阻塞</li>
+</ul>
+</li>
+<li>使用 <code>q.get()</code> 获取元素<ul>
+<li>当队列元素为空时会发生阻塞</li>
+</ul>
+</li>
+<li>使用 <code>q.qsize()</code> 查看元素大小</li>
+<li>使用 <code>q.empty()</code> 判断队列是否为空</li>
+<li>使用 <code>q.full()</code> 判断队列是否已满</li>
+</ul>
+</li>
+</ol>
+<h3 id="代码编写实现生产者消费者爬虫"><a href="#代码编写实现生产者消费者爬虫" class="headerlink" title="代码编写实现生产者消费者爬虫"></a>代码编写实现生产者消费者爬虫</h3><ul>
+<li>先创建两个函数, <code>craw()</code> 用于获取页面 html 结果, <code>parse()</code> 用于提取页面元素</li>
+<li>使用 <code>url_queue = queue.Queue()</code> 创建一个 url 队列的对象</li>
+<li>使用 <code>html_queue = queue.Queue()</code> 创建一个 html 队列的对象</li>
+<li>再创建两个队列函数, 无限循环并一直等待 queue 队列 <code>get</code> 或 <code>put</code> 传入或输出数据<ul>
+<li><code>do_craw()</code> 线程通过 <code>url_queue.get()</code> 获取 url, 并将 url 传入 <code>craw()</code> 函数获取 html 内容, 再通过 <code>html_queue.put(html)</code> 将获取到的 html 内容传入 <code>html_queue</code> 队列</li>
+<li><code>do_parse()</code> 线程通过 <code>html_queue.get()</code> 获取 <code>do_craw()</code> 传入的 html 内容, 调用 <code>parse()</code> 函数解析, 并将解析的结果直接输出</li>
+</ul>
+</li>
+<li>通过 <code>for</code> 循环结构将 url 全部 <code>put</code> 进入 <code>url_queue</code> 队列</li>
+<li>再通过 <code>for</code> 循环结构创建并启动指向 <code>do_craw()</code> 和 <code>do_parse()</code> 函数的多个线程</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> queue</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">craw</span>(<span class="params">url</span>):</span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    <span class="keyword">return</span> r.text</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">html</span>):</span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">    links = soup.find_all(<span class="string">&quot;a&quot;</span>, class_=<span class="string">&quot;post-item-title&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> [(link[<span class="string">&quot;href&quot;</span>], link.get_text()) <span class="keyword">for</span> link <span class="keyword">in</span> links]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">do_craw</span>(<span class="params">url_queue, html_queue</span>):</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        url = url_queue.get()</span><br><span class="line">        html = craw(url)</span><br><span class="line">        html_queue.put(html)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">do_parse</span>(<span class="params">html_queue</span>):</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        html = html_queue.get()</span><br><span class="line">        results = parse(html)</span><br><span class="line">        <span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">            <span class="built_in">print</span>(result)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    urls = [</span><br><span class="line">        <span class="string">f&quot;https://www.cnblogs.com/sitehome/p/<span class="subst">&#123;page&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">51</span>)</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    url_queue = queue.Queue()</span><br><span class="line">    html_queue = queue.Queue()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">        url_queue.put(url)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">        t = threading.Thread(target=do_craw, args=(url_queue, html_queue), name=<span class="string">f&quot;craw<span class="subst">&#123;idx&#125;</span>&quot;</span>)</span><br><span class="line">        t.start()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">        t = threading.Thread(target=do_parse, args=(html_queue,), name=<span class="string">f&quot;parse<span class="subst">&#123;idx&#125;</span>&quot;</span>)</span><br><span class="line">        t.start()</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x03-线程安全问题以及-Lock-解决方案"><a href="#0x03-线程安全问题以及-Lock-解决方案" class="headerlink" title="0x03 线程安全问题以及 Lock 解决方案"></a>0x03 线程安全问题以及 Lock 解决方案</h2><h3 id="线程安全概念介绍"><a href="#线程安全概念介绍" class="headerlink" title="线程安全概念介绍"></a>线程安全概念介绍</h3><ul>
+<li>线程安全指某个函数、函数库在多线程环境中被调用时, 能够正确地处理多个线程之间的共享变量, 使程序功能正确完成。</li>
+<li>由于线程的执行随时会切换, 就造成了不可预料的结果, 出现线程不安全</li>
+</ul>
+<h3 id="Lock-用于解决线程安全问题"><a href="#Lock-用于解决线程安全问题" class="headerlink" title="Lock 用于解决线程安全问题"></a>Lock 用于解决线程安全问题</h3><ul>
+<li>使用 <code>lock = threading.Lock()</code> 实例化一个线程锁对象</li>
+<li>使用 <code>lock.acquire()</code> 锁定线程, 再使用 <code>lock.release()</code> 释放线程锁, 或是在执行代码前使用上下文管理 <code>with lock:</code> 后续执行的代码都将被设置线程锁, with 代码块内的代码运行结束后, 线程锁自动释放</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line">lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Account</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, balance</span>):</span><br><span class="line">        self.balance = balance</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw</span>(<span class="params">account, amount</span>):</span><br><span class="line">    <span class="keyword">with</span> lock:</span><br><span class="line">        <span class="keyword">if</span> account.balance &gt;= amount:</span><br><span class="line">            <span class="built_in">print</span>(threading.current_thread().name, <span class="string">&quot;取钱成功&quot;</span>)</span><br><span class="line">            account.balance -= amount</span><br><span class="line">            <span class="built_in">print</span>(threading.current_thread().name, <span class="string">&quot;余额&quot;</span>, account.balance)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(threading.current_thread().name, <span class="string">&quot;取钱, 余额不足&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    account = Account(<span class="number">1000</span>)</span><br><span class="line">    ta = threading.Thread(target=draw, args=(account, <span class="number">800</span>))</span><br><span class="line">    tb = threading.Thread(target=draw, args=(account, <span class="number">800</span>))</span><br><span class="line"></span><br><span class="line">    ta.start()</span><br><span class="line">    tb.start()</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x04-好用的线程池-ThreadPoolExecutor"><a href="#0x04-好用的线程池-ThreadPoolExecutor" class="headerlink" title="0x04 好用的线程池 ThreadPoolExecutor"></a>0x04 好用的线程池 ThreadPoolExecutor</h2><h3 id="线程池的生命周期和原理"><a href="#线程池的生命周期和原理" class="headerlink" title="线程池的生命周期和原理"></a>线程池的生命周期和原理</h3><ol>
+<li>线程的生命周期状态包括新建、就绪、运行、终止和阻塞<ul>
+<li>新建的线程通过 start 进入就绪状态, 此时线程并没有真正开始运行, 线程的运行需要系统进行调度</li>
+<li>通过系统调度线程真正进入运行状态<ul>
+<li>运行中的线程可能会因为失去 CPU 资源, 重新进入就绪状态</li>
+<li>也有可能会因为遇到 sleep 或 io 进入阻塞状态, 等到 sleep 或 io 完成后重新进入就绪状态</li>
+</ul>
+</li>
+<li>当线程运行完毕后线程进入终止状态</li>
+</ul>
+</li>
+<li>线程池的原理<ul>
+<li>新建线程系统时需要分配资源, 终止线程系统需要回收资源, 当系统中存在大量线程需要使用时, 会频繁的新建和终止线程, 会产生大量的时间开销和线程开销</li>
+<li>如果可以重用线程, 则可以减去新建&#x2F;终止的开销</li>
+<li>使用线程池时, 当有新的任务创建后, 新的任务会被放入任务队列中, 线程池会依次调用线程队列中的任务, 放入线程池中执行, 完成后会取下一个任务继续执行, 当所有线程都执行完成后, 线程池并不会销毁, 而是等待下一个任务的到来</li>
+</ul>
+</li>
+<li>线程池的好处<ul>
+<li>提升性能: 因为减去了大量新建、终止线程的开销, 重用了线程资源</li>
+<li>适用场景: 适合处理突发性大量请求或是需要大量线程完成任务、但实际任务处理时间较短</li>
+<li>防御功能: 能有效避免系统因为创建线程过多, 而导致系统负荷过大响应变慢等问题</li>
+<li>代码优势: 使用线程池的语法比自己新建线程执行线程更加简洁</li>
+</ul>
+</li>
+</ol>
+<h3 id="ThreadPoolExecutor-的使用语法"><a href="#ThreadPoolExecutor-的使用语法" class="headerlink" title="ThreadPoolExecutor 的使用语法"></a>ThreadPoolExecutor 的使用语法</h3><ul>
+<li>使用 <code>from concurrent.futures import ThreadPoolExecutor, as_completed</code> 导入模块</li>
+<li>使用 <code>with ThreadPoolExecutor() as pool:</code> 实例化一个线程池对象<ul>
+<li>在 with 语句内使用 <code>results = pool.map(函数名称, 参数列表)</code> 将每一个参数作用于线程池对象并获得返回结果</li>
+<li>也可以使用列表推导式 <code>futures = [pool.submit(函数名称, 参数) for 参数 in 参数列表]</code> 的方式通过 <code>pool.submit</code> 给线程池传入对象</li>
+<li>futures 返回对象的结果存储在 <code>futures.results()</code> 内, 两种遍历方式如下 (使用 as_completed 时返回的顺序是不一定的, 而普通的遍历是依次返回)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> feture <span class="keyword">in</span> futures:</span><br><span class="line">	<span class="built_in">print</span>(future.result())</span><br><span class="line"><span class="keyword">for</span> future <span class="keyword">in</span> as_completed(futures):</span><br><span class="line">	<span class="built_in">print</span>(future.result())</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用线程池改造爬虫程序"><a href="#使用线程池改造爬虫程序" class="headerlink" title="使用线程池改造爬虫程序"></a>使用线程池改造爬虫程序</h3><ul>
+<li>craw 线程池<ul>
+<li>使用 <code>with concurrent.futures.ThreadPoolExecutor() as pool:</code> 创建线程池对象</li>
+<li>使用 <code>pool.map(craw, urls)</code> 将 urls 列表中每一个元素都传入 craw 函数, 作用与线程池</li>
+<li>使用 <code>zip(urls, htmls)</code> 将 urls 的元素依次与 htmls 的元素对应生成一个 zip 对象 (url 对应 htmls)</li>
+<li>通过 <code>for</code> 循环遍历输出 url 对应的 html 页面长度信息 (在程序内已经存在 htmls 列表)</li>
+</ul>
+</li>
+<li>parse 线程池<ul>
+<li>使用 <code>with concurrent.futures.ThreadPoolExecutor() as pool:</code> 创建线程池对象</li>
+<li>使用 <code>for</code> 循环依次遍历 url 和 html 内容</li>
+<li>使用 <code>pool.submit(parse, html)</code> 将 html 内容传入 parse 函数进行解析</li>
+<li>创建一个 <code>futures</code> 字典用来存储 url 以及对应提取后的内容</li>
+<li>使用 <code>futures[future] = url</code> 为字典填入 url 和提取后的内容</li>
+<li>最后通过 for 循环遍历 <code>futures.items()</code> 字典的 url 和提取后的内容</li>
+<li>(使用 as_completed 遍历元素时, 不可以同时使用 <code>items()</code> 函数, url 需要在循环结构内再次进行赋值)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> concurrent.futures</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">craw</span>(<span class="params">url</span>):</span><br><span class="line">    r = requests.get(url)</span><br><span class="line">    <span class="keyword">return</span> r.text</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">parse</span>(<span class="params">html</span>):</span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&#x27;html.parser&#x27;</span>)</span><br><span class="line">    links = soup.find_all(<span class="string">&quot;a&quot;</span>, class_=<span class="string">&quot;post-item-title&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> [(link[<span class="string">&quot;href&quot;</span>], link.get_text()) <span class="keyword">for</span> link <span class="keyword">in</span> links]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    urls = [</span><br><span class="line">        <span class="string">f&quot;https://www.cnblogs.com/sitehome/p/<span class="subst">&#123;page&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">51</span>)</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># craw</span></span><br><span class="line">    <span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> pool:</span><br><span class="line">        htmls = pool.<span class="built_in">map</span>(craw, urls)</span><br><span class="line">        htmls = <span class="built_in">list</span>(<span class="built_in">zip</span>(urls, htmls))</span><br><span class="line">        <span class="keyword">for</span> url, html <span class="keyword">in</span> htmls:</span><br><span class="line">            <span class="built_in">print</span>(url, <span class="built_in">len</span>(html))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;craw over.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># parse - 1</span></span><br><span class="line">    <span class="comment"># with concurrent.futures.ThreadPoolExecutor() as pool:</span></span><br><span class="line">    <span class="comment">#     futures = &#123;&#125;</span></span><br><span class="line">    <span class="comment">#     for url, html in htmls:</span></span><br><span class="line">    <span class="comment">#         future = pool.submit(parse, html)</span></span><br><span class="line">    <span class="comment">#         futures[future] = url</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#     for future, url in futures.items():</span></span><br><span class="line">    <span class="comment">#         print(url, future.result())</span></span><br><span class="line">    <span class="comment"># print(&#x27;parse over.&#x27;)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># parse - 2</span></span><br><span class="line">    <span class="keyword">with</span> concurrent.futures.ThreadPoolExecutor() <span class="keyword">as</span> pool:</span><br><span class="line">        futures = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> url, html <span class="keyword">in</span> htmls:</span><br><span class="line">            future = pool.submit(parse, html)</span><br><span class="line">            futures[future] = url</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> future <span class="keyword">in</span> concurrent.futures.as_completed(futures):</span><br><span class="line">            url = futures[future]</span><br><span class="line">            <span class="built_in">print</span>(url, future.result())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x05-在-Web-服务中使用线程池加速"><a href="#0x05-在-Web-服务中使用线程池加速" class="headerlink" title="0x05 在 Web 服务中使用线程池加速"></a>0x05 在 Web 服务中使用线程池加速</h2><p>#Skip-Temporarily</p>
+<ol>
+<li>Web 服务的架构以及特点</li>
+<li>使用线程池 ThreadPoolExecutor 加速</li>
+<li>代码用 Flask 实现 Web 服务并实现加速</li>
+</ol>
+<h2 id="0x06-使用多进程-multiprocessing-加速程序运行"><a href="#0x06-使用多进程-multiprocessing-加速程序运行" class="headerlink" title="0x06 使用多进程 multiprocessing 加速程序运行"></a>0x06 使用多进程 multiprocessing 加速程序运行</h2><h3 id="为何有了多线程还需要多进程"><a href="#为何有了多线程还需要多进程" class="headerlink" title="为何有了多线程还需要多进程"></a>为何有了多线程还需要多进程</h3><ul>
+<li>如果遇到了 CPU 密集型计算, 多线程反而会降低执行速度</li>
+<li>虽然有全局解释器锁 GIL, 但因为有 IO 的存在, 多线程依然可以加速运行</li>
+<li>CPU 密集型计算, 线程的自动切换反而变成了负担, 多线程甚至会减慢程序运行速度</li>
+<li>multiprocessing 模块就是 Python 为了解决 GIL 缺陷引入的一个模块, 原理是用多进程在多 CPU 上并行执行</li>
+<li>多进程和多线程的语法几乎完全相同, 如下图所示</li>
+</ul>
+<p><img src="/../assets/img/Python%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%8C%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E5%8D%8F%E7%A8%8B%E5%8A%A0%E9%80%9F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C/image-20221201123223816.jpeg"></p>
+<h3 id="单线程、多线程、多进程对比-CPU-密集计算速度"><a href="#单线程、多线程、多进程对比-CPU-密集计算速度" class="headerlink" title="单线程、多线程、多进程对比 CPU 密集计算速度"></a>单线程、多线程、多进程对比 CPU 密集计算速度</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</span><br><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ProcessPoolExecutor</span><br><span class="line">PRIMES = [<span class="number">112272535095293</span>] * <span class="number">100</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_prime</span>(<span class="params">number</span>):</span><br><span class="line">    <span class="keyword">if</span> number &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">if</span> number == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">if</span> number % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    sqrt_n = <span class="built_in">int</span>(math.floor(math.sqrt(number)))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, sqrt_n + <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">if</span> number % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">single_thread</span>():</span><br><span class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> PRIMES:</span><br><span class="line">        is_prime(number)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">multi_thread</span>():</span><br><span class="line">    <span class="keyword">with</span> ThreadPoolExecutor() <span class="keyword">as</span> pool:</span><br><span class="line">        pool.<span class="built_in">map</span>(is_prime, PRIMES)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">multi_process</span>():</span><br><span class="line">    <span class="keyword">with</span> ProcessPoolExecutor() <span class="keyword">as</span> pool:</span><br><span class="line">        pool.<span class="built_in">map</span>(is_prime, PRIMES)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    single_thread()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;single thread cost <span class="subst">&#123;time.time() - start_time&#125;</span> seconds&quot;</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    multi_thread()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;multi thread cost <span class="subst">&#123;time.time() - start_time&#125;</span> seconds&quot;</span>)</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    multi_process()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;multi process cost <span class="subst">&#123;time.time() - start_time&#125;</span> seconds&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 程序运行结果</span><br><span class="line">single thread cost 21.787539958953857 seconds</span><br><span class="line">multi thread cost 21.68295693397522 seconds</span><br><span class="line">multi process cost 2.8622336387634277 seconds</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x07-在-Flask-服务中使用进程池加速"><a href="#0x07-在-Flask-服务中使用进程池加速" class="headerlink" title="0x07 在 Flask 服务中使用进程池加速"></a>0x07 在 Flask 服务中使用进程池加速</h2><p>#Skip-Temporarily </p>
+<h2 id="0x08-Python-异步-IO-实现并发爬虫"><a href="#0x08-Python-异步-IO-实现并发爬虫" class="headerlink" title="0x08 Python 异步 IO 实现并发爬虫"></a>0x08 Python 异步 IO 实现并发爬虫</h2><h3 id="协程的基本概念"><a href="#协程的基本概念" class="headerlink" title="协程的基本概念"></a>协程的基本概念</h3><ul>
+<li>协程: 在单线程内实现并发</li>
+<li>核心原理在于用一个超级循环 (其实就是 while true) 循环, 配合 IO 多路复用 (IO 时 CPU 可以做其他事)</li>
+<li>在一个线程进行中的步骤为 CPU、等待 IO、CPU, 使用协程可以在中途等待 IO 完成后, 直接进入下一个任务的第一个 CPU 计算状态, 而不必等待结果返回后再进入下一个任务</li>
+</ul>
+<h3 id="Python-异步-IO-库-asyncio-使用"><a href="#Python-异步-IO-库-asyncio-使用" class="headerlink" title="Python 异步 IO 库 asyncio 使用"></a>Python 异步 IO 库 asyncio 使用</h3><ul>
+<li>使用 <code>import asyncio</code> 导入异步 IO 库</li>
+<li>使用 <code>async def 函数名称(参数)</code> 定义协程函数</li>
+<li>携程函数内使用 <code>await 属性名称</code> 定义代码块, 不会等待, 而是直接切换到下一个任务</li>
+<li>使用 <code>loop = asyncio.get_event_loop()</code> 获取事件循环 (超级循环)</li>
+<li>使用 <code>tasks = [loop.create_task(函数名称(参数)) for url in urls]</code> 创建 task 列表</li>
+<li>使用 <code>loop.run_until_complete(asyncio.wait(task))</code> 执行 task 列表</li>
+<li>使用协程需要对应的库支持异步 IO 特性, 其中 requests 不支持异步, 而 aiohttp 支持</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> aiohttp</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">urls = [</span><br><span class="line">    <span class="string">f&quot;https://www.cnblogs.com/sitehome/p/<span class="subst">&#123;page&#125;</span>&quot;</span></span><br><span class="line">    <span class="keyword">for</span> page <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">51</span>)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">async_craw</span>(<span class="params">url</span>):</span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:</span><br><span class="line">        <span class="keyword">async</span> <span class="keyword">with</span> session.get(url) <span class="keyword">as</span> resp:</span><br><span class="line">            result = <span class="keyword">await</span> resp.text()</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;url&#125;</span> <span class="subst">&#123;<span class="built_in">len</span>(result)&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line"></span><br><span class="line">tasks = [</span><br><span class="line">    loop.create_task(async_craw(url))</span><br><span class="line">    <span class="keyword">for</span> url <span class="keyword">in</span> urls]</span><br><span class="line"></span><br><span class="line">start_time = time.time()</span><br><span class="line">loop.run_until_complete(asyncio.wait(tasks))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;async craw cost <span class="subst">&#123;time.time() - start_time&#125;</span> seconds.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x09-在异步-IO-中使用信号量控制爬虫并发度"><a href="#0x09-在异步-IO-中使用信号量控制爬虫并发度" class="headerlink" title="0x09 在异步 IO 中使用信号量控制爬虫并发度"></a>0x09 在异步 IO 中使用信号量控制爬虫并发度</h2><h3 id="信号量-Semaphore"><a href="#信号量-Semaphore" class="headerlink" title="信号量 Semaphore"></a>信号量 Semaphore</h3><ul>
+<li>信号量 (Semaphore) 又称为信号量, 旗语言</li>
+<li>是一个同步对象, 用于保持在 0 至最大值之间的一个计数器</li>
+<li>当线程完成一次对该 semaphore 对象的等待 (wait) 时, 该计数值减一</li>
+<li>当线程完成一次对 semaphore 对象的释放 (release) 时, 计数值减一</li>
+<li>当计数值为 0, 则线程等待该 semaphore 对象不再能成功直至该 semaphore 对象变成 signaled 状态</li>
+<li>semaphore 对象的计数值大于 0, 为 signaled 状态, 计数值等于 0, 为 nonsignaled 状态</li>
+</ul>
+<h3 id="使用-Semaphore-模块控制并发度"><a href="#使用-Semaphore-模块控制并发度" class="headerlink" title="使用 Semaphore 模块控制并发度"></a>使用 Semaphore 模块控制并发度</h3><ul>
+<li>使用 <code>sem = asyncio.Semaphore(10)</code> 实例化一个信号量对象</li>
+<li>使用 <code>async with sem:</code> 语句块的代码都会遵循设置好的信号量运行</li>
+<li>或是使用 <code>await sem.acquire()</code> 锁定信号量, 再 <code>try:</code> 语句执行代码, 最后通过 <code>finally: sem.release()</code> 释放信号量限制</li>
+</ul>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/posts/39245/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2022-12-01 19:39:00
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-%E5%BC%95%E8%A8%80"><span class="toc-text">0x00 引言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Python-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="toc-text">Python 并发编程简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%8E%E6%A0%B7%E9%80%89%E6%8B%A9%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E5%8D%8F%E7%A8%8B"><span class="toc-text">怎样选择多线程、多进程和多协程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GIL-%E5%85%A8%E5%B1%80%E8%A7%A3%E9%87%8A%E5%99%A8%E9%94%81"><span class="toc-text">GIL 全局解释器锁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-%E5%88%A9%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E7%88%AC%E8%99%AB%E7%A8%8B%E5%BA%8F"><span class="toc-text">0x01 利用多线程加速爬虫程序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Python-%E5%88%9B%E5%BB%BA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-text">Python 创建多线程的方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E7%88%AC%E8%99%AB-VS-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E8%99%AB%E9%80%9F%E5%BA%A6%E5%AF%B9%E6%AF%94"><span class="toc-text">单线程爬虫 VS 多线程爬虫速度对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%88%AC%E8%99%AB"><span class="toc-text">0x02 生产者消费者模式多线程爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pipeline-%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%E5%92%8C%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B"><span class="toc-text">Pipeline 技术架构和生产者消费者模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%E5%AE%9E%E7%8E%B0%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E7%88%AC%E8%99%AB"><span class="toc-text">代码编写实现生产者消费者爬虫</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A-Lock-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">0x03 线程安全问题以及 Lock 解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="toc-text">线程安全概念介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lock-%E7%94%A8%E4%BA%8E%E8%A7%A3%E5%86%B3%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-text">Lock 用于解决线程安全问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E5%A5%BD%E7%94%A8%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%B1%A0-ThreadPoolExecutor"><span class="toc-text">0x04 好用的线程池 ThreadPoolExecutor</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8C%E5%8E%9F%E7%90%86"><span class="toc-text">线程池的生命周期和原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadPoolExecutor-%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95"><span class="toc-text">ThreadPoolExecutor 的使用语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%94%B9%E9%80%A0%E7%88%AC%E8%99%AB%E7%A8%8B%E5%BA%8F"><span class="toc-text">使用线程池改造爬虫程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E5%9C%A8-Web-%E6%9C%8D%E5%8A%A1%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8A%A0%E9%80%9F"><span class="toc-text">0x05 在 Web 服务中使用线程池加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-%E4%BD%BF%E7%94%A8%E5%A4%9A%E8%BF%9B%E7%A8%8B-multiprocessing-%E5%8A%A0%E9%80%9F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C"><span class="toc-text">0x06 使用多进程 multiprocessing 加速程序运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BD%95%E6%9C%89%E4%BA%86%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%BF%98%E9%9C%80%E8%A6%81%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">为何有了多线程还需要多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%AF%B9%E6%AF%94-CPU-%E5%AF%86%E9%9B%86%E8%AE%A1%E7%AE%97%E9%80%9F%E5%BA%A6"><span class="toc-text">单线程、多线程、多进程对比 CPU 密集计算速度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-%E5%9C%A8-Flask-%E6%9C%8D%E5%8A%A1%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%BF%9B%E7%A8%8B%E6%B1%A0%E5%8A%A0%E9%80%9F"><span class="toc-text">0x07 在 Flask 服务中使用进程池加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-Python-%E5%BC%82%E6%AD%A5-IO-%E5%AE%9E%E7%8E%B0%E5%B9%B6%E5%8F%91%E7%88%AC%E8%99%AB"><span class="toc-text">0x08 Python 异步 IO 实现并发爬虫</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E7%A8%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">协程的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python-%E5%BC%82%E6%AD%A5-IO-%E5%BA%93-asyncio-%E4%BD%BF%E7%94%A8"><span class="toc-text">Python 异步 IO 库 asyncio 使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09-%E5%9C%A8%E5%BC%82%E6%AD%A5-IO-%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%8E%A7%E5%88%B6%E7%88%AC%E8%99%AB%E5%B9%B6%E5%8F%91%E5%BA%A6"><span class="toc-text">0x09 在异步 IO 中使用信号量控制爬虫并发度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F-Semaphore"><span class="toc-text">信号量 Semaphore</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Semaphore-%E6%A8%A1%E5%9D%97%E6%8E%A7%E5%88%B6%E5%B9%B6%E5%8F%91%E5%BA%A6"><span class="toc-text">使用 Semaphore 模块控制并发度</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'rGZ9kkLBUv2MMFBQAT5StlGZ-gzGzoHsz',
+        appKey: 'fG7LaLcyEuDUlihr06UJFBua',
+        placeholder: 'Just go go.',
+        avatar: 'retro',
+        lang: 'zh-CN'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/icekylin/">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/670041240">
+            <i class="iconfont icon-bilibili"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a href="https://icekylin.github.io">Copyright © 2022 icekylin</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+    <div class="footer-views">
+      
+          pv:<span id="busuanzi_value_site_pv"></span>
+        
+      
+      
+          uv:<span id="busuanzi_value_site_uv"></span>
+        
+      
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Python%20%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%EF%BC%8C%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E5%8D%8F%E7%A8%8B%E5%8A%A0%E9%80%9F%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C + '&url=' + http%3A%2F%2Ficekylin.github.io%2Fposts%2F57803%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://icekylin.github.io/posts/57803/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
