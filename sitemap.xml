@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://icekylin.github.io/posts/53187/</loc>
+    <loc>https://icekylin.github.io/posts/53187/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/posts/52777/</loc>
+    <loc>https://icekylin.github.io/posts/52777/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/posts/3834/</loc>
+    <loc>https://icekylin.github.io/posts/3834/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/posts/57803/</loc>
+    <loc>https://icekylin.github.io/posts/57803/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/posts/39245/</loc>
+    <loc>https://icekylin.github.io/posts/39245/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/posts/40921/</loc>
+    <loc>https://icekylin.github.io/posts/40921/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/posts/38206/</loc>
+    <loc>https://icekylin.github.io/posts/38206/</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/about/index.html</loc>
+    <loc>https://icekylin.github.io/about/index.html</loc>
     
     <lastmod>2022-12-06</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/templates/notes_templates.html</loc>
+    <loc>https://icekylin.github.io/templates/notes_templates.html</loc>
     
     <lastmod>2022-11-30</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/categories/index.html</loc>
+    <loc>https://icekylin.github.io/categories/index.html</loc>
     
     <lastmod>2022-11-22</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/tags/index.html</loc>
+    <loc>https://icekylin.github.io/tags/index.html</loc>
     
     <lastmod>2022-11-22</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/templates/BLOG_TEMPLATES.html</loc>
+    <loc>https://icekylin.github.io/templates/BLOG_TEMPLATES.html</loc>
     
     <lastmod>2022-11-22</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/search/index.html</loc>
+    <loc>https://icekylin.github.io/search/index.html</loc>
     
     <lastmod>2022-11-15</lastmod>
     
@@ -120,7 +120,7 @@
   
 
   <url>
-    <loc>http://icekylin.github.io/</loc>
+    <loc>https://icekylin.github.io/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -128,42 +128,42 @@
 
   
   <url>
-    <loc>http://icekylin.github.io/tags/CSS/</loc>
+    <loc>https://icekylin.github.io/tags/Roadmap/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/tags/Roadmap/</loc>
+    <loc>https://icekylin.github.io/tags/CSS/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/tags/HTML/</loc>
+    <loc>https://icekylin.github.io/tags/Virtual-Machine/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/tags/Python/</loc>
+    <loc>https://icekylin.github.io/tags/HTML/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/tags/Virtual-Machine/</loc>
+    <loc>https://icekylin.github.io/tags/Python/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/tags/SRC/</loc>
+    <loc>https://icekylin.github.io/tags/SRC/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -172,21 +172,21 @@
 
   
   <url>
-    <loc>http://icekylin.github.io/categories/Develop/</loc>
+    <loc>https://icekylin.github.io/categories/Planning/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/categories/Planning/</loc>
+    <loc>https://icekylin.github.io/categories/Develop/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://icekylin.github.io/categories/Security/</loc>
+    <loc>https://icekylin.github.io/categories/Security/</loc>
     <lastmod>2022-12-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
