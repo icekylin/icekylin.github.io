@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>【Git 后悔药】撤销改动(add、commit)、强制同步</title>
+      <link href="/posts/38611/"/>
+      <url>/posts/38611/</url>
+      
+        <content type="html"><![CDATA[<p>reference:</p><ul><li><a href="https://www.cnblogs.com/lfxiao/p/9378763.html">https://www.cnblogs.com/lfxiao/p/9378763.html</a></li><li><a href="https://blog.csdn.net/sinat_36184075/article/details/80115000">https://blog.csdn.net/sinat_36184075/article/details/80115000</a></li></ul><blockquote><p>撤销 git add 和 git commit、强行与远程仓库进程同步</p></blockquote><h3 id="撤销-git-add-和-git-commit"><a href="#撤销-git-add-和-git-commit" class="headerlink" title="撤销 git add 和 git commit"></a>撤销 git add 和 git commit</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;Something&quot;</span><br></pre></td></tr></table></figure><p>在添加所有文件添加注释后需要撤回</p><ul><li>取消这一次的 commit: <code>git reset --soft HEAD^</code></li><li>取消 add 以及 commit: <code>git reset</code></li></ul><p><strong>参数解读:</strong></p><ul><li><code>HEAD^</code> 代表撤销到上一个版本, 如果需要撤销两个版本可以使用 <code>HEAD~2</code> 以此类推</li><li><code>--mixed</code> 不撤销代码改动, 撤销 commit 以及 add 的操作<ul><li><code>git reset --mixed</code> 相当于 <code>git reset</code></li></ul></li><li><code>--soft</code> 不撤销代码改动, 撤销 commit, 不撤销 add 操作</li><li><code>--hard</code> 撤销代码改动, 并撤销 commit 以及 add 操作</li></ul><h3 id="强行与远程仓库进程同步"><a href="#强行与远程仓库进程同步" class="headerlink" title="强行与远程仓库进程同步"></a>强行与远程仓库进程同步</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/main</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure><p><strong>参数解读:</strong></p><ol><li>拉取所有更新，不同步</li><li>本地代码同步线上最新版本(会覆盖本地所有与远程仓库上同名的文件)<ul><li>分支根据需求修改 <code>origin/分支</code></li></ul></li><li>再次同步</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Integrated </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python 并发编程实战，用多线程、多进程和多协程加速程序运行</title>
       <link href="/posts/57803/"/>
       <url>/posts/57803/</url>

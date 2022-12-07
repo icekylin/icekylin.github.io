@@ -6,7 +6,7 @@
   <link href="https://icekylin.github.io/atom.xml" rel="self"/>
   
   <link href="https://icekylin.github.io/"/>
-  <updated>2022-12-06T17:27:32.123Z</updated>
+  <updated>2022-12-07T19:07:29.958Z</updated>
   <id>https://icekylin.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Git 后悔药】撤销改动(add、commit)、强制同步</title>
+    <link href="https://icekylin.github.io/posts/38611/"/>
+    <id>https://icekylin.github.io/posts/38611/</id>
+    <published>2022-12-07T18:42:02.000Z</published>
+    <updated>2022-12-07T19:07:29.958Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Integrated" scheme="https://icekylin.github.io/categories/Integrated/"/>
+    
+    
+    <category term="git" scheme="https://icekylin.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Python 并发编程实战，用多线程、多进程和多协程加速程序运行</title>

@@ -11,7 +11,7 @@
   
   <title>
     
-      archive_a: 2022/11 
+      【Git 后悔药】撤销改动(add、commit)、强制同步 
       
       
       |
@@ -105,95 +105,179 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2022</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">【Git 后悔药】撤销改动(add、commit)、强制同步</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2022-12-08 02:42:02
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <p>reference:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lfxiao/p/9378763.html">https://www.cnblogs.com/lfxiao/p/9378763.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36184075/article/details/80115000">https://blog.csdn.net/sinat_36184075/article/details/80115000</a></li>
+</ul>
+<blockquote>
+<p>撤销 git add 和 git commit、强行与远程仓库进程同步</p>
+</blockquote>
+<h3 id="撤销-git-add-和-git-commit"><a href="#撤销-git-add-和-git-commit" class="headerlink" title="撤销 git add 和 git commit"></a>撤销 git add 和 git commit</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;Something&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在添加所有文件添加注释后需要撤回</p>
+<ul>
+<li>取消这一次的 commit: <code>git reset --soft HEAD^</code></li>
+<li>取消 add 以及 commit: <code>git reset</code></li>
+</ul>
+<p><strong>参数解读:</strong></p>
+<ul>
+<li><code>HEAD^</code> 代表撤销到上一个版本, 如果需要撤销两个版本可以使用 <code>HEAD~2</code> 以此类推</li>
+<li><code>--mixed</code> 不撤销代码改动, 撤销 commit 以及 add 的操作<ul>
+<li><code>git reset --mixed</code> 相当于 <code>git reset</code></li>
+</ul>
+</li>
+<li><code>--soft</code> 不撤销代码改动, 撤销 commit, 不撤销 add 操作</li>
+<li><code>--hard</code> 撤销代码改动, 并撤销 commit 以及 add 操作</li>
+</ul>
+<h3 id="强行与远程仓库进程同步"><a href="#强行与远程仓库进程同步" class="headerlink" title="强行与远程仓库进程同步"></a>强行与远程仓库进程同步</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch --all</span><br><span class="line">git reset --hard origin/main</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数解读:</strong></p>
+<ol>
+<li>拉取所有更新，不同步</li>
+<li>本地代码同步线上最新版本(会覆盖本地所有与远程仓库上同名的文件)<ul>
+<li>分支根据需求修改 <code>origin/分支</code></li>
+</ul>
+</li>
+<li>再次同步</li>
+</ol>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/posts/57803/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2022-12-08 02:42:02
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="【Git 后悔药】撤销改动(add、commit)、强制同步">
-        <div class="time-m-d">12-08</div>
-        <div class="title">
-          <a href="/posts/38611/">
-            <span>【Git 后悔药】撤销改动(add、commit)、强制同步</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="Python 并发编程实战，用多线程、多进程和多协程加速程序运行">
-        <div class="time-m-d">12-01</div>
-        <div class="title">
-          <a href="/posts/57803/">
-            <span>Python 并发编程实战，用多线程、多进程和多协程加速程序运行</span>
-          </a>
-        </div>
-      </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%A4%E9%94%80-git-add-%E5%92%8C-git-commit"><span class="toc-text">撤销 git add 和 git commit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E8%A1%8C%E4%B8%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-text">强行与远程仓库进程同步</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
-      <div class="post-item" title="20分钟CSS快速入门教程">
-        <div class="time-m-d">12-01</div>
-        <div class="title">
-          <a href="/posts/39245/">
-            <span>20分钟CSS快速入门教程</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="HTML 30分钟入门教程">
-        <div class="time-m-d">12-01</div>
-        <div class="title">
-          <a href="/posts/52777/">
-            <span>HTML 30分钟入门教程</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="M1 Macbook Install Kali Linux Virtual Machine">
-        <div class="time-m-d">11-21</div>
-        <div class="title">
-          <a href="/posts/53187/">
-            <span>M1 Macbook Install Kali Linux Virtual Machine</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Python Multithreading & Multiprocess">
-        <div class="time-m-d">11-15</div>
-        <div class="title">
-          <a href="/posts/3834/">
-            <span>Python Multithreading & Multiprocess</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="记一次公益 SRC 上分思路">
-        <div class="time-m-d">09-15</div>
-        <div class="title">
-          <a href="/posts/38206/">
-            <span>记一次公益 SRC 上分思路</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Cyber Security Quick Start">
-        <div class="time-m-d">09-10</div>
-        <div class="title">
-          <a href="/posts/40921/">
-            <span>Cyber Security Quick Start</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'rGZ9kkLBUv2MMFBQAT5StlGZ-gzGzoHsz',
+        appKey: 'fG7LaLcyEuDUlihr06UJFBua',
+        placeholder: 'Just go go.',
+        avatar: 'retro',
+        lang: 'zh-CN'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -471,6 +555,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E3%80%90Git%20%E5%90%8E%E6%82%94%E8%8D%AF%E3%80%91%E6%92%A4%E9%94%80%E6%94%B9%E5%8A%A8(add%E3%80%81commit)%E3%80%81%E5%BC%BA%E5%88%B6%E5%90%8C%E6%AD%A5 + '&url=' + https%3A%2F%2Ficekylin.github.io%2Fposts%2F38611%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://icekylin.github.io/posts/38611/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
