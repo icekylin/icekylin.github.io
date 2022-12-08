@@ -6,7 +6,7 @@
   <link href="https://icekylin.github.io/atom.xml" rel="self"/>
   
   <link href="https://icekylin.github.io/"/>
-  <updated>2022-12-07T19:07:29.958Z</updated>
+  <updated>2022-12-08T05:49:10.725Z</updated>
   <id>https://icekylin.github.io/</id>
   
   <author>
@@ -21,16 +21,17 @@
     <link href="https://icekylin.github.io/posts/38611/"/>
     <id>https://icekylin.github.io/posts/38611/</id>
     <published>2022-12-07T18:42:02.000Z</published>
-    <updated>2022-12-07T19:07:29.958Z</updated>
+    <updated>2022-12-08T05:49:10.725Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;撤销 git add 和 git commit、强行与远程仓库进程同步&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;撤销-git-add-和-git-commit&quot;&gt;&lt;a href=&quot;#撤销-git-add-和-git-commit&quot;</summary>
         
       
     
@@ -48,16 +49,14 @@
     <link href="https://icekylin.github.io/posts/57803/"/>
     <id>https://icekylin.github.io/posts/57803/</id>
     <published>2022-12-01T11:39:00.000Z</published>
-    <updated>2022-12-06T17:27:32.123Z</updated>
+    <updated>2022-12-08T05:50:07.524Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
+    <summary type="html">&lt;h3 id=&quot;0x00-引言&quot;&gt;&lt;a href=&quot;#0x00-引言&quot; class=&quot;headerlink&quot; title=&quot;0x00 引言&quot;&gt;&lt;/a&gt;0x00 引言&lt;/h3&gt;&lt;h4 id=&quot;Python-并发编程简介&quot;&gt;&lt;a href=&quot;#Python-并发编程简介&quot;</summary>
         
       
     
@@ -75,16 +74,14 @@
     <link href="https://icekylin.github.io/posts/39245/"/>
     <id>https://icekylin.github.io/posts/39245/</id>
     <published>2022-12-01T11:36:00.000Z</published>
-    <updated>2022-12-06T17:22:39.549Z</updated>
+    <updated>2022-12-08T05:49:57.020Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;0x01-CSS-语法-结构、类型&quot;&gt;&lt;a href=&quot;#0x01-CSS-语法-结构、类型&quot; class=&quot;headerlink&quot; title=&quot;0x01 CSS 语法 (结构、类型)&quot;&gt;&lt;/a&gt;0x01 CSS 语法 (结构、类型)&lt;/h2&gt;&lt;h3</summary>
         
       
     
@@ -102,16 +99,15 @@
     <link href="https://icekylin.github.io/posts/52777/"/>
     <id>https://icekylin.github.io/posts/52777/</id>
     <published>2022-12-01T11:36:00.000Z</published>
-    <updated>2022-12-06T17:33:18.191Z</updated>
+    <updated>2022-12-08T05:49:46.917Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;什么是-HTML&quot;&gt;&lt;a href=&quot;#什么是-HTML&quot; class=&quot;headerlink&quot; title=&quot;什么是 HTML&quot;&gt;&lt;/a&gt;什么是 HTML&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;超文本标记语言 (Hyper Text Mark-up Language,</summary>
         
       
     
@@ -129,7 +125,7 @@
     <link href="https://icekylin.github.io/posts/53187/"/>
     <id>https://icekylin.github.io/posts/53187/</id>
     <published>2022-11-21T07:57:00.000Z</published>
-    <updated>2022-12-06T17:34:36.074Z</updated>
+    <updated>2022-12-08T05:50:17.432Z</updated>
     
     
       
@@ -139,9 +135,7 @@
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;主要解决安装时光标闪烁黑屏问题、以及后续的一些优化详情, 相关链接已置于文末&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;reference:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a</summary>
+&lt;h3 id=&quot;安装-Kali-Linux&quot;&gt;&lt;a href=&quot;#安装-Kali-Linux&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -159,17 +153,15 @@
     <link href="https://icekylin.github.io/posts/3834/"/>
     <id>https://icekylin.github.io/posts/3834/</id>
     <published>2022-11-15T06:16:00.000Z</published>
-    <updated>2022-12-06T17:28:52.633Z</updated>
+    <updated>2022-12-08T05:50:49.215Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;reference:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=I3E4MHTpABA&quot;&gt;一个视频告诉你并发、并行、异步、同步的区别&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;1、并发编程理论&quot;&gt;&lt;a href=&quot;#1、并发编程理论&quot; class=&quot;headerlink&quot; title=&quot;1、并发编程理论&quot;&gt;&lt;/a&gt;1、并发编程理论&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;本章节中同步和异步阻塞和非阻塞较难理解, 只做了浅显的介绍,</summary>
         
       
     

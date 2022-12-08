@@ -159,11 +159,7 @@
         
       </div>
       <div class="markdown-body">
-        <p>reference:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bK411A7tV/">https://www.bilibili.com/video/BV1bK411A7tV/</a></li>
-</ul>
-<h3 id="0x00-引言"><a href="#0x00-引言" class="headerlink" title="0x00 引言"></a>0x00 引言</h3><h4 id="Python-并发编程简介"><a href="#Python-并发编程简介" class="headerlink" title="Python 并发编程简介"></a>Python 并发编程简介</h4><ol>
+        <h3 id="0x00-引言"><a href="#0x00-引言" class="headerlink" title="0x00 引言"></a>0x00 引言</h3><h4 id="Python-并发编程简介"><a href="#Python-并发编程简介" class="headerlink" title="Python 并发编程简介"></a>Python 并发编程简介</h4><ol>
 <li>为什么要引入并发编程<ul>
 <li>场景1: 普通爬虫需要花费长时间的任务, 通过并发编程可以减少花费时间</li>
 <li>场景2: APP 应用, 后台有大部分请求资源, 使用异步并发可以降低延迟</li>
@@ -435,6 +431,11 @@
 <li>使用 <code>sem = asyncio.Semaphore(10)</code> 实例化一个信号量对象</li>
 <li>使用 <code>async with sem:</code> 语句块的代码都会遵循设置好的信号量运行</li>
 <li>或是使用 <code>await sem.acquire()</code> 锁定信号量, 再 <code>try:</code> 语句执行代码, 最后通过 <code>finally: sem.release()</code> 释放信号量限制</li>
+</ul>
+<hr>
+<p><strong>Reference:</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bK411A7tV/">https://www.bilibili.com/video/BV1bK411A7tV/</a></li>
 </ul>
 
       </div>
